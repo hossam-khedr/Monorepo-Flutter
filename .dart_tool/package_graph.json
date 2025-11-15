@@ -25,7 +25,8 @@
         "cupertino_icons",
         "data",
         "flutter",
-        "shared_ui"
+        "shared_ui",
+        "theme"
       ],
       "devDependencies": [
         "flutter_lints",
@@ -40,7 +41,8 @@
         "cupertino_icons",
         "data",
         "flutter",
-        "shared_ui"
+        "shared_ui",
+        "theme"
       ],
       "devDependencies": [
         "flutter_lints",
@@ -151,6 +153,13 @@
       "name": "cupertino_icons",
       "version": "1.0.8",
       "dependencies": []
+    },
+    {
+      "name": "theme",
+      "version": "0.0.1",
+      "dependencies": [
+        "flutter"
+      ]
     },
     {
       "name": "yaml_edit",
