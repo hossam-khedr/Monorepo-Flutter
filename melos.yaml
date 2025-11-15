@@ -1,0 +1,12 @@
+name: hr_system
+packages:
+  - packages/*
+  - apps/*
+
+scripts:
+  bootstrap:
+    run: melos bootstrap
+  format:
+    run: dart format .
+  test:
+    run: flutter test
