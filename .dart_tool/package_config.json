@@ -296,6 +296,12 @@
       "languageVersion": "3.5"
     },
     {
+      "name": "theme",
+      "rootUri": "../packages/theme",
+      "packageUri": "lib/",
+      "languageVersion": "3.9"
+    },
+    {
       "name": "typed_data",
       "rootUri": "file:///C:/Users/abdalla%20shiha/AppData/Local/Pub/Cache/hosted/pub.dev/typed_data-1.4.0",
       "packageUri": "lib/",
