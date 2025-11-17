@@ -15,7 +15,7 @@ dependencies:
   flutter:
     sdk: flutter
   core:
-    path: ../../packages/core
+    path: ../../packages/core/
   data:
     path: ../../packages/data
   shared_ui:
