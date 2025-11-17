@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:theme/theming/colors/dark_colors.dart';
 
 import 'app_typo_graphy.dart';
-import 'colors/light_colors.dart';
+import 'custom_theme_extension.dart';
+
 
 class DarkTheme{
   DarkTheme._();
@@ -11,6 +12,9 @@ class DarkTheme{
   static ThemeData getDarkTheme(){
     final theme =  ThemeData(
       useMaterial3: true,
+      extensions: [
+        CustomDialogTheme.dark()
+      ],
       scaffoldBackgroundColor: DarkColors.darkBackground,
       brightness: Brightness.dark,
       appBarTheme: AppBarTheme(
@@ -76,6 +80,7 @@ class DarkTheme{
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
       ),
+
     );
 
     return theme;

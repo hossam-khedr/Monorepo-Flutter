@@ -11,6 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  theme:
+    path: ../../packages/theme
  # Networking
   dio: ^5.9.0
 
