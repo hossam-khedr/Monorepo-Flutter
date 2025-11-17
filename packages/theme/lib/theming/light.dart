@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:theme/theming/colors/light_colors.dart';
+import 'package:theme/theming/custom_theme_extension.dart';
 
 import 'app_typo_graphy.dart';
 
@@ -12,6 +13,9 @@ class LightTheme{
 
    final theme =  ThemeData(
       useMaterial3: true,
+     extensions: [
+       CustomDialogTheme.light()
+     ],
      scaffoldBackgroundColor: LightColors.background,
 brightness: Brightness.light,
      appBarTheme: AppBarTheme(

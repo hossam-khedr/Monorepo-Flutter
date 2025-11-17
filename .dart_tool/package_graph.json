@@ -60,7 +60,8 @@
         "dio",
         "flutter",
         "internet_connection_checker",
-        "shared_preferences"
+        "shared_preferences",
+        "theme"
       ],
       "devDependencies": [
         "flutter_lints",

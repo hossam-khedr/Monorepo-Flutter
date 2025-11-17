@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-
-
-
-
-enum DialogType { success, error, warning, info, confirm, custom }
+import 'package:theme/theming/custom_theme_extension.dart';
 
 class DialogHelper {
-
   // Success Dialog
   static Future<void> success(
       BuildContext context, {
@@ -16,13 +11,14 @@ class DialogHelper {
         VoidCallback? onConfirm,
         bool barrierDismissible = false,
       }) {
+    final theme = context.dialogTheme;
     return _showCustomDialog(
       context,
       type: DialogType.success,
       title: title ?? 'نجح!',
       message: message,
       icon: Icons.check_circle,
-      color: const Color(0xFF10B981),
+      color: theme.successColor,
       buttonText: buttonText,
       onConfirm: onConfirm,
       barrierDismissible: barrierDismissible,
@@ -38,13 +34,14 @@ class DialogHelper {
         VoidCallback? onConfirm,
         bool barrierDismissible = false,
       }) {
+    final theme = context.dialogTheme;
     return _showCustomDialog(
       context,
       type: DialogType.error,
       title: title ?? 'خطأ!',
       message: message,
       icon: Icons.error,
-      color: const Color(0xFFEF4444),
+      color: theme.errorColor,
       buttonText: buttonText,
       onConfirm: onConfirm,
       barrierDismissible: barrierDismissible,
@@ -60,13 +57,14 @@ class DialogHelper {
         VoidCallback? onConfirm,
         bool barrierDismissible = false,
       }) {
+    final theme = context.dialogTheme;
     return _showCustomDialog(
       context,
       type: DialogType.warning,
       title: title ?? 'تحذير!',
       message: message,
       icon: Icons.warning_amber,
-      color: const Color(0xFFF59E0B),
+      color: theme.warningColor,
       buttonText: buttonText,
       onConfirm: onConfirm,
       barrierDismissible: barrierDismissible,
@@ -82,13 +80,14 @@ class DialogHelper {
         VoidCallback? onConfirm,
         bool barrierDismissible = false,
       }) {
+    final theme = context.dialogTheme;
     return _showCustomDialog(
       context,
       type: DialogType.info,
       title: title ?? 'معلومة',
       message: message,
       icon: Icons.info,
-      color: const Color(0xFF3B82F6),
+      color: theme.infoColor,
       buttonText: buttonText,
       onConfirm: onConfirm,
       barrierDismissible: barrierDismissible,
@@ -106,6 +105,7 @@ class DialogHelper {
         Color? cancelColor,
         bool barrierDismissible = true,
       }) async {
+    final theme = context.dialogTheme;
     final result = await showAdaptiveDialog<bool>(
       context: context,
       barrierDismissible: barrierDismissible,
@@ -114,7 +114,7 @@ class DialogHelper {
         message: message,
         confirmText: confirmText,
         cancelText: cancelText,
-        confirmColor: confirmColor ?? const Color(0xFF3B82F6),
+        confirmColor: confirmColor ?? theme.infoColor,
         cancelColor: cancelColor ?? Colors.grey[700]!,
       ),
     );
@@ -178,10 +178,11 @@ class DialogHelper {
     required WidgetBuilder builder,
     bool barrierDismissible = false,
   }) {
+    final theme = context.dialogTheme;
     return showDialog<T>(
       context: context,
       barrierDismissible: barrierDismissible,
-      barrierColor: Colors.black54,
+      barrierColor: theme.barrierColor,
       builder: builder,
     );
   }
@@ -208,7 +209,7 @@ class DialogHelper {
   }
 }
 
-// Custom Dialog Widget
+// Custom Dialog Widget with Theme Support
 class _CustomDialog extends StatefulWidget {
   final DialogType type;
   final String title;
@@ -272,6 +273,8 @@ class _CustomDialogState extends State<_CustomDialog>
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.dialogTheme;
+
     return Semantics(
       label: '${widget.title} dialog',
       child: FadeTransition(
@@ -280,22 +283,16 @@ class _CustomDialogState extends State<_CustomDialog>
           scale: _scaleAnimation,
           child: Dialog(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(24),
+              borderRadius: theme.borderRadius,
             ),
-            elevation: 0,
+            elevation: theme.elevation,
             backgroundColor: Colors.transparent,
             child: Container(
-              padding: const EdgeInsets.all(24),
+              padding: theme.padding,
               decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(24),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 20,
-                    offset: const Offset(0, 10),
-                  ),
-                ],
+                color: theme.backgroundColor,
+                borderRadius: theme.borderRadius,
+                boxShadow: theme.boxShadow,
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -309,7 +306,7 @@ class _CustomDialogState extends State<_CustomDialog>
                     ),
                     child: Icon(
                       widget.icon,
-                      size: 48,
+                      size: theme.iconSize,
                       color: widget.color,
                     ),
                   ),
@@ -318,9 +315,7 @@ class _CustomDialogState extends State<_CustomDialog>
                   // Title
                   Text(
                     widget.title,
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
+                    style: theme.titleTextStyle.copyWith(
                       color: widget.color,
                     ),
                     textAlign: TextAlign.center,
@@ -330,11 +325,7 @@ class _CustomDialogState extends State<_CustomDialog>
                   // Message
                   Text(
                     widget.message,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey[700],
-                      height: 1.5,
-                    ),
+                    style: theme.messageTextStyle,
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 24),
@@ -347,7 +338,7 @@ class _CustomDialogState extends State<_CustomDialog>
                       style: ElevatedButton.styleFrom(
                         backgroundColor: widget.color,
                         foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        padding: theme.buttonPadding,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
@@ -355,10 +346,7 @@ class _CustomDialogState extends State<_CustomDialog>
                       ),
                       child: Text(
                         widget.buttonText,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: theme.buttonTextStyle,
                       ),
                     ),
                   ),
@@ -372,7 +360,7 @@ class _CustomDialogState extends State<_CustomDialog>
   }
 }
 
-// Confirm Dialog Widget
+// Confirm Dialog with Theme Support
 class _ConfirmDialog extends StatefulWidget {
   final String title;
   final String message;
@@ -432,6 +420,8 @@ class _ConfirmDialogState extends State<_ConfirmDialog>
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.dialogTheme;
+
     return Semantics(
       label: '${widget.title} confirmation dialog',
       child: FadeTransition(
@@ -440,22 +430,16 @@ class _ConfirmDialogState extends State<_ConfirmDialog>
           scale: _scaleAnimation,
           child: Dialog(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(24),
+              borderRadius: theme.borderRadius,
             ),
-            elevation: 0,
+            elevation: theme.elevation,
             backgroundColor: Colors.transparent,
             child: Container(
-              padding: const EdgeInsets.all(24),
+              padding: theme.padding,
               decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(24),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 20,
-                    offset: const Offset(0, 10),
-                  ),
-                ],
+                color: theme.backgroundColor,
+                borderRadius: theme.borderRadius,
+                boxShadow: theme.boxShadow,
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -469,7 +453,7 @@ class _ConfirmDialogState extends State<_ConfirmDialog>
                     ),
                     child: Icon(
                       Icons.help_outline,
-                      size: 48,
+                      size: theme.iconSize,
                       color: widget.confirmColor,
                     ),
                   ),
@@ -478,11 +462,7 @@ class _ConfirmDialogState extends State<_ConfirmDialog>
                   // Title
                   Text(
                     widget.title,
-                    style: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF1F2937),
-                    ),
+                    style: theme.titleTextStyle,
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 12),
@@ -490,11 +470,7 @@ class _ConfirmDialogState extends State<_ConfirmDialog>
                   // Message
                   Text(
                     widget.message,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey[700],
-                      height: 1.5,
-                    ),
+                    style: theme.messageTextStyle,
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 24),
@@ -508,18 +484,19 @@ class _ConfirmDialogState extends State<_ConfirmDialog>
                           onPressed: _handleCancel,
                           style: OutlinedButton.styleFrom(
                             foregroundColor: widget.cancelColor,
-                            side: BorderSide(color: Colors.grey[300]!),
-                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            side: BorderSide(
+                              color: theme.backgroundColor == Colors.white
+                                  ? Colors.grey[300]!
+                                  : Colors.grey[600]!,
+                            ),
+                            padding: theme.buttonPadding,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
                             ),
                           ),
                           child: Text(
                             widget.cancelText,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style: theme.buttonTextStyle,
                           ),
                         ),
                       ),
@@ -532,7 +509,7 @@ class _ConfirmDialogState extends State<_ConfirmDialog>
                           style: ElevatedButton.styleFrom(
                             backgroundColor: widget.confirmColor,
                             foregroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            padding: theme.buttonPadding,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
                             ),
@@ -540,10 +517,7 @@ class _ConfirmDialogState extends State<_ConfirmDialog>
                           ),
                           child: Text(
                             widget.confirmText,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style: theme.buttonTextStyle,
                           ),
                         ),
                       ),
@@ -559,7 +533,7 @@ class _ConfirmDialogState extends State<_ConfirmDialog>
   }
 }
 
-// Loading Dialog Widget
+// Loading Dialog with Theme Support
 class _LoadingDialog extends StatelessWidget {
   final String? message;
 
@@ -567,21 +541,24 @@ class _LoadingDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.dialogTheme;
+
     return PopScope(
       canPop: false,
       child: Semantics(
         label: 'Loading dialog',
         child: Dialog(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: theme.borderRadius,
           ),
-          elevation: 0,
+          elevation: theme.elevation,
           backgroundColor: Colors.transparent,
           child: Container(
-            padding: const EdgeInsets.all(24),
+            padding: theme.padding,
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
+              color: theme.backgroundColor,
+              borderRadius: theme.borderRadius,
+              boxShadow: theme.boxShadow,
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -593,7 +570,7 @@ class _LoadingDialog extends StatelessWidget {
                   child: CircularProgressIndicator(
                     strokeWidth: 3,
                     valueColor: AlwaysStoppedAnimation<Color>(
-                      Colors.blue.shade600,
+                      theme.infoColor,
                     ),
                   ),
                 ),
@@ -603,10 +580,7 @@ class _LoadingDialog extends StatelessWidget {
                   const SizedBox(height: 16),
                   Text(
                     message!,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.grey[700],
-                    ),
+                    style: theme.messageTextStyle.copyWith(fontSize: 14),
                     textAlign: TextAlign.center,
                   ),
                 ],
