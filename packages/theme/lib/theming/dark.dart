@@ -17,13 +17,6 @@ class DarkTheme{
         backgroundColor: DarkColors.cardColorDark,
         centerTitle: true,
         elevation: 2,
-        systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: DarkColors.cardColorDark,
-          statusBarIconBrightness: Brightness.light,
-          statusBarBrightness: Brightness.dark,
-          systemNavigationBarColor: DarkColors.cardColorDark,
-          systemNavigationBarIconBrightness: Brightness.light,
-        ),
       ),
       cardTheme: CardThemeData(
           color: DarkColors.cardColorDark,

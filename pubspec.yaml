@@ -1,16 +1,17 @@
 name: hr_system
-
-description: "A new Flutter package project."
-version: 0.0.1
-homepage:
+description: HR System monorepo workspace
+publish_to: none
+#description: "A new Flutter package project."
+#version: 0.0.1
+#homepage:
 
 environment:
   sdk: ^3.9.2
-  flutter: ">=1.17.0"
-dependencies:
-  flutter:
-    sdk: flutter
-  melos: ^7.3.0
+#  flutter: ">=1.17.0"
+#dependencies:
+#  flutter:
+#    sdk: flutter
+#  melos: ^7.3.0
 
 workspace:
   - apps/employee
@@ -18,3 +19,45 @@ workspace:
   - packages/core
   - packages/data
   - packages/shared_ui
+  - packages/theme
+
+dev_dependencies:
+  melos: ^7.3.0-dev.9
+
+
+melos:
+ name: hr_system
+ version: 7.3.0
+
+ scripts:
+   bootstrap_all:
+     description: Initialize all packages
+     run: melos bootstrap
+
+   clean:
+     description: Clean all packages
+     run: melos exec -- flutter clean
+
+   pub_get:
+     description: Get dependencies for all packages
+     run: melos exec -- flutter pub get
+
+   format:
+     description: Format all Dart files
+     run: melos exec -- dart format .
+
+   analyze:
+     description: Analyze all packages
+     run: melos exec -- flutter analyze
+
+   test:
+     description: Run tests for all packages
+     run: melos exec -- flutter test
+
+ command:
+   bootstrap:
+     runPubGetInParallel: false
+     usePubspecOverrides: true
+
+ ide:
+   intellij: true

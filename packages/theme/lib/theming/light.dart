@@ -9,6 +9,7 @@ class LightTheme{
   LightTheme._();
 
   static ThemeData getLightTheme(){
+
    final theme =  ThemeData(
       useMaterial3: true,
      scaffoldBackgroundColor: LightColors.background,
@@ -17,13 +18,6 @@ brightness: Brightness.light,
        backgroundColor: LightColors.cardColor,
        centerTitle: true,
        elevation: 2,
-       systemOverlayStyle: SystemUiOverlayStyle(
-         statusBarColor: LightColors.cardColor,
-         statusBarIconBrightness: Brightness.dark,
-         statusBarBrightness: Brightness.light,
-         systemNavigationBarColor: LightColors.cardColor,
-         systemNavigationBarIconBrightness: Brightness.dark,
-       ),
      ),
      cardTheme: CardThemeData(
        color: LightColors.cardColor,
