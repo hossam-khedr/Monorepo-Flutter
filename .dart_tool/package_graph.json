@@ -5,6 +5,7 @@
     "employee",
     "hr",
     "hr_system",
+    "login",
     "shared_ui",
     "theme"
   ],
@@ -27,6 +28,7 @@
         "equatable",
         "flutter",
         "flutter_bloc",
+        "login",
         "shared_preferences",
         "shared_ui",
         "theme"
@@ -72,6 +74,8 @@
       "name": "data",
       "version": "0.0.1",
       "dependencies": [
+        "core",
+        "dartz",
         "flutter"
       ],
       "devDependencies": [
@@ -95,6 +99,23 @@
       "version": "0.0.1",
       "dependencies": [
         "flutter"
+      ],
+      "devDependencies": [
+        "flutter_lints",
+        "flutter_test"
+      ]
+    },
+    {
+      "name": "login",
+      "version": "0.0.1",
+      "dependencies": [
+        "core",
+        "data",
+        "employee",
+        "flutter",
+        "flutter_bloc",
+        "hr",
+        "theme"
       ],
       "devDependencies": [
         "flutter_lints",
@@ -157,6 +178,15 @@
       ]
     },
     {
+      "name": "flutter_bloc",
+      "version": "9.1.1",
+      "dependencies": [
+        "bloc",
+        "flutter",
+        "provider"
+      ]
+    },
+    {
       "name": "flutter",
       "version": "0.0.0",
       "dependencies": [
@@ -167,6 +197,11 @@
         "sky_engine",
         "vector_math"
       ]
+    },
+    {
+      "name": "dartz",
+      "version": "0.10.1",
+      "dependencies": []
     },
     {
       "name": "shared_preferences",
@@ -180,11 +215,6 @@
         "shared_preferences_web",
         "shared_preferences_windows"
       ]
-    },
-    {
-      "name": "dartz",
-      "version": "0.10.1",
-      "dependencies": []
     },
     {
       "name": "internet_connection_checker",
@@ -220,15 +250,6 @@
       "dependencies": [
         "collection",
         "meta"
-      ]
-    },
-    {
-      "name": "flutter_bloc",
-      "version": "9.1.1",
-      "dependencies": [
-        "bloc",
-        "flutter",
-        "provider"
       ]
     },
     {
@@ -485,6 +506,22 @@
       ]
     },
     {
+      "name": "provider",
+      "version": "6.1.5+1",
+      "dependencies": [
+        "collection",
+        "flutter",
+        "nested"
+      ]
+    },
+    {
+      "name": "bloc",
+      "version": "9.1.0",
+      "dependencies": [
+        "meta"
+      ]
+    },
+    {
       "name": "sky_engine",
       "version": "0.0.0",
       "dependencies": []
@@ -598,22 +635,6 @@
       ]
     },
     {
-      "name": "provider",
-      "version": "6.1.5+1",
-      "dependencies": [
-        "collection",
-        "flutter",
-        "nested"
-      ]
-    },
-    {
-      "name": "bloc",
-      "version": "9.1.0",
-      "dependencies": [
-        "meta"
-      ]
-    },
-    {
       "name": "source_span",
       "version": "1.10.1",
       "dependencies": [
@@ -708,6 +729,13 @@
       ]
     },
     {
+      "name": "nested",
+      "version": "1.0.0",
+      "dependencies": [
+        "flutter"
+      ]
+    },
+    {
       "name": "path_provider_windows",
       "version": "2.3.0",
       "dependencies": [
@@ -772,13 +800,6 @@
       "version": "1.4.0",
       "dependencies": [
         "collection"
-      ]
-    },
-    {
-      "name": "nested",
-      "version": "1.0.0",
-      "dependencies": [
-        "flutter"
       ]
     },
     {

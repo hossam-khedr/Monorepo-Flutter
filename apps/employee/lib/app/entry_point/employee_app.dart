@@ -1,6 +1,6 @@
 import 'package:employee/base_cubit/cubit.dart';
 import 'package:employee/base_cubit/states.dart';
-import 'package:employee/core/routing/app_route.dart';
+import 'package:employee/core/routing/employee_route.dart';
 import 'package:employee/core/routing/generateor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,7 +23,7 @@ class EmployeeApp extends StatelessWidget {
             themeMode: context.read<BaseCubit>().toThemeMode(
               state.appThemeMode,
             ),
-            initialRoute: AppRoute.root,
+            initialRoute: EmployeeRoute.login,
             onGenerateRoute: GenerateRoute.onGenerateRoute,
 
           );

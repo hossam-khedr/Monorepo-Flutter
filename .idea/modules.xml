@@ -6,6 +6,7 @@
 <module fileurl="file://$PROJECT_DIR$/packages/data/melos_data.iml" filepath="$PROJECT_DIR$/packages/data/melos_data.iml"/>
 <module fileurl="file://$PROJECT_DIR$/apps/employee/melos_employee.iml" filepath="$PROJECT_DIR$/apps/employee/melos_employee.iml"/>
 <module fileurl="file://$PROJECT_DIR$/apps/hr/melos_hr.iml" filepath="$PROJECT_DIR$/apps/hr/melos_hr.iml"/>
+<module fileurl="file://$PROJECT_DIR$/packages/login/melos_login.iml" filepath="$PROJECT_DIR$/packages/login/melos_login.iml"/>
 <module fileurl="file://$PROJECT_DIR$/packages/shared_ui/melos_shared_ui.iml" filepath="$PROJECT_DIR$/packages/shared_ui/melos_shared_ui.iml"/>
 <module fileurl="file://$PROJECT_DIR$/packages/theme/melos_theme.iml" filepath="$PROJECT_DIR$/packages/theme/melos_theme.iml"/>
 <module fileurl="file://$PROJECT_DIR$/melos_hr_system.iml" filepath="$PROJECT_DIR$/melos_hr_system.iml"/>
