@@ -1,5 +1,4 @@
 name: employee
-resolution: workspace
 description: "A new Flutter project."
 
 publish_to: 'none'
@@ -9,6 +8,7 @@ version: 1.0.0+1
 
 environment:
   sdk: ^3.9.2
+resolution: workspace
 
 
 dependencies:
@@ -22,6 +22,10 @@ dependencies:
     path: ../../packages/shared_ui
   theme:
     path: ../../packages/theme
+  login:
+    path: ../../packages/login
+
+
 # State Managment
   flutter_bloc: ^9.1.1
   equatable: ^2.0.7

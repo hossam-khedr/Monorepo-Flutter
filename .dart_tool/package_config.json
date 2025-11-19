@@ -546,6 +546,12 @@
       "rootUri": "../packages/theme",
       "packageUri": "lib/",
       "languageVersion": "3.9"
+    },
+    {
+      "name": "login",
+      "rootUri": "../packages/login",
+      "packageUri": "lib/",
+      "languageVersion": "3.9"
     }
   ],
   "generator": "pub",

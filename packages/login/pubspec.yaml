@@ -1,4 +1,4 @@
-name: shared_ui
+name: login
 description: "A new Flutter package project."
 version: 0.0.1
 
@@ -8,10 +8,22 @@ environment:
   flutter: ">=1.17.0"
 resolution: workspace
 
-
 dependencies:
   flutter:
     sdk: flutter
+
+  flutter_bloc: ^9.1.1
+  theme:
+    path: ../../packages/theme
+  core:
+    path: ../../packages/core/
+  data:
+    path: ../../packages/data/
+  employee:
+    path: ../../apps/employee
+  hr:
+    path: ../../apps/hr
+
 
 dev_dependencies:
   flutter_test:

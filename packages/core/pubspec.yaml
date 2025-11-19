@@ -1,5 +1,4 @@
 name: core
-resolution: workspace
 description: "Core Package for All Apps"
 version: 0.0.1
 
@@ -7,6 +6,8 @@ version: 0.0.1
 environment:
   sdk: ^3.9.2
   flutter: ">=1.17.0"
+resolution: workspace
+
 
 dependencies:
   flutter:
