@@ -1,4 +1,5 @@
 import 'package:core/utils/dialog_helper.dart';
+import 'package:employee/app/app_icon.dart';
 import 'package:employee/app/app_strings.dart';
 import 'package:employee/app/responsive_helper.dart';
 import 'package:employee/audience/audience_screen.dart';
@@ -62,7 +63,12 @@ class _RootScreenState extends State<RootScreen> {
                     BuildNavigator(
                       index: 0,
                       navigatorKeys: state.navigatorKeys,
-                      child: HomeScreen(),
+                      child: HomeScreen(
+                        onAudience:() => context.read<RootCubit>().selectedIndex(1),
+                        onProfile: ()=> context.read<RootCubit>().selectedIndex(5),
+                        onHolidays:()=>context.read<RootCubit>().selectedIndex(2) ,
+                        onSalary:()=>context.read<RootCubit>().selectedIndex(3) ,
+                      ),
                     ),
                     BuildNavigator(
                       index: 1,
@@ -99,27 +105,27 @@ class _RootScreenState extends State<RootScreen> {
                 },
                 items: [
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.home_filled),
+                    icon: Icon(AppIcons.home),
                     label: AppStrings.home,
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.access_time),
+                    icon: Icon(AppIcons.time),
                     label: AppStrings.audience,
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.calendar_month),
+                    icon: Icon(AppIcons.calendar),
                     label: AppStrings.holidays,
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.monetization_on_outlined),
+                    icon: Icon(AppIcons.monetization),
                     label: AppStrings.salary,
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.wechat),
+                    icon: Icon(AppIcons.chat),
                     label: AppStrings.chats,
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.person_outline),
+                    icon: Icon(AppIcons.person),
                     label: AppStrings.profile,
                   ),
                 ],

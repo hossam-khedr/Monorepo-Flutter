@@ -21,7 +21,7 @@ class GenerateRoute {
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (_) => LoginCubit(loginRepo: loginRepo),
-            child: LoginScreen(toRoute: EmployeeRoute.root),
+            child: LoginScreen(),
           ),
         );
       case EmployeeRoute.root:

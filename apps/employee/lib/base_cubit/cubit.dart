@@ -1,8 +1,12 @@
+import 'package:core/constants/api_constants.dart';
+import 'package:core/utils/cache_helper.dart';
 import 'package:employee/base_cubit/states.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../core/routing/employee_route.dart';
 
 class BaseCubit extends Cubit<BaseAppStats> {
   BaseCubit()
@@ -83,6 +87,16 @@ await saveMode(mode);
         return true;
       case AppThemeMode.system:
         return getSystemBrightness();
+    }
+  }
+
+  String? checedEmployeeLogdIin(){
+    final token = CacheHelper.getString(ApiConstants.tokenKey);
+    print(token);
+    if (token != null) {
+      return EmployeeRoute.root;
+    } else{
+      return EmployeeRoute.login;
     }
   }
 }

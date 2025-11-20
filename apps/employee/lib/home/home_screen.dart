@@ -1,10 +1,16 @@
 import 'package:employee/app/responsive_helper.dart';
 import 'package:employee/home/widgets/home_card.dart';
+import 'package:employee/home/widgets/quick_procedures.dart';
+import 'package:employee/home/widgets/recent_activities.dart';
 import 'package:flutter/material.dart';
 import 'package:theme/theming/colors/light_colors.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final void Function()? onProfile;
+  final void Function()? onAudience;
+  final void Function()? onHolidays;
+  final void Function()? onSalary;
+  const HomeScreen({super.key, this.onProfile, this.onAudience, this.onHolidays, this.onSalary});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                   buttonColor: LightColors.blow,
                   iconColor: LightColors.blow,
                   icon: Icons.access_time,
-                  onPressed: (){},
+                  onPressed: onAudience,
                   textButton: 'تسجيل الانصراف',
                 ),
                 HomeCard(
@@ -41,7 +47,7 @@ class HomeScreen extends StatelessWidget {
                   buttonColor: LightColors.green,
                   iconColor: LightColors.green,
                   icon: Icons.calendar_month,
-                  onPressed: (){},
+                  onPressed: onHolidays,
                   textButton: 'طلب اجازه',
                 ),
                 HomeCard(
@@ -51,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                   buttonColor: LightColors.orange,
                   iconColor: LightColors.orange,
                   icon: Icons.monetization_on_outlined,
-                  onPressed: (){},
+                  onPressed: onSalary,
                   textButton: 'عرض التفاصيل',
                 ),
                 HomeCard(
@@ -63,6 +69,13 @@ class HomeScreen extends StatelessWidget {
                   icon: Icons.bar_chart,
                 ),
               ],
+            ),
+            SizedBox(height: context.responsive.screenHeight * 0.04,),
+            RecentActivities(),
+            SizedBox(height: context.responsive.screenHeight * 0.04,),
+            QuickProcedures(
+              onProfile: onProfile,
+              onHolidays: onHolidays,
             ),
 
           ],

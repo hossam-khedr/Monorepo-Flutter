@@ -1,4 +1,4 @@
-import 'package:core/utils/cache_helper.dart';
+
 import 'package:core/utils/dialog_helper.dart';
 import 'package:core/utils/navigation_helper.dart';
 import 'package:core/utils/toast_helper.dart';
@@ -13,9 +13,9 @@ import 'package:login/login_feature/logic/state.dart';
 import 'package:theme/theming/colors/light_colors.dart';
 
 class LoginScreen extends StatefulWidget {
-  final String toRoute;
 
-  const LoginScreen({super.key, required this.toRoute});
+
+  const LoginScreen({super.key,});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -25,8 +25,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final formKey = GlobalKey<FormState>();
-
-
 
 
   @override
