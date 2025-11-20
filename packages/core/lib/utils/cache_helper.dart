@@ -2,7 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheHelper{
   static SharedPreferences? sharedPref;
-  static void initCacheHelper()async{
+  static Future<void> initCacheHelper()async{
     sharedPref = await SharedPreferences.getInstance();
   }
   static Future<dynamic>getData(String key) async {
