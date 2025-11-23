@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-
-
 enum ToastType { success, error, warning, info }
 
 class ToastHelper {
@@ -11,15 +9,14 @@ class ToastHelper {
   static Timer? _timer;
 
   static void show(
-      BuildContext context, {
-        required String message,
-        required ToastType type,
-        int duration = 4,
-        String? title,
-        ToastPosition position = ToastPosition.top,
-        bool dismissible = true,
-      }) {
-
+    BuildContext context, {
+    required String message,
+    required ToastType type,
+    int duration = 4,
+    String? title,
+    ToastPosition position = ToastPosition.top,
+    bool dismissible = true,
+  }) {
     _dismissCurrent();
 
     final overlay = Overlay.of(context);
@@ -55,13 +52,13 @@ class ToastHelper {
 
   // Success Toast
   static void success(
-      BuildContext context,
-      String message, {
-        String? title,
-        int duration = 4,
-        ToastPosition position = ToastPosition.top,
-        bool dismissible = true,
-      }) {
+    BuildContext context,
+    String message, {
+    String? title,
+    int duration = 4,
+    ToastPosition position = ToastPosition.top,
+    bool dismissible = true,
+  }) {
     show(
       context,
       message: message,
@@ -75,13 +72,13 @@ class ToastHelper {
 
   // Error Toast
   static void error(
-      BuildContext context,
-      String message, {
-        String? title,
-        int duration = 5,
-        ToastPosition position = ToastPosition.top,
-        bool dismissible = true,
-      }) {
+    BuildContext context,
+    String message, {
+    String? title,
+    int duration = 5,
+    ToastPosition position = ToastPosition.top,
+    bool dismissible = true,
+  }) {
     show(
       context,
       message: message,
@@ -95,13 +92,13 @@ class ToastHelper {
 
   // Warning Toast
   static void warning(
-      BuildContext context,
-      String message, {
-        String? title,
-        int duration = 4,
-        ToastPosition position = ToastPosition.top,
-        bool dismissible = true,
-      }) {
+    BuildContext context,
+    String message, {
+    String? title,
+    int duration = 4,
+    ToastPosition position = ToastPosition.top,
+    bool dismissible = true,
+  }) {
     show(
       context,
       message: message,
@@ -115,13 +112,13 @@ class ToastHelper {
 
   // Info Toast
   static void info(
-      BuildContext context,
-      String message, {
-        String? title,
-        int duration = 3,
-        ToastPosition position = ToastPosition.top,
-        bool dismissible = true,
-      }) {
+    BuildContext context,
+    String message, {
+    String? title,
+    int duration = 3,
+    ToastPosition position = ToastPosition.top,
+    bool dismissible = true,
+  }) {
     show(
       context,
       message: message,
@@ -175,9 +172,10 @@ class _ToastWidgetState extends State<_ToastWidget>
       vsync: this,
     );
 
-    _scaleAnimation = Tween<double>(begin: 0.8, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOutBack),
-    );
+    _scaleAnimation = Tween<double>(
+      begin: 0.8,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
 
     final offset = widget.position == ToastPosition.top
         ? const Offset(0, -1)
@@ -186,18 +184,12 @@ class _ToastWidgetState extends State<_ToastWidget>
     _slideAnimation = Tween<Offset>(
       begin: offset,
       end: Offset.zero,
-    ).animate(CurvedAnimation(
-        parent: _controller,
-        curve: Curves.easeOutCubic
-    ));
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic));
 
     _fadeAnimation = Tween<double>(
       begin: 0.0,
       end: 1.0,
-    ).animate(CurvedAnimation(
-        parent: _controller,
-        curve: Curves.easeInOut
-    ));
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
     _controller.forward();
 
@@ -259,9 +251,7 @@ class _ToastWidgetState extends State<_ToastWidget>
     final bottomPadding = mediaQuery.padding.bottom;
 
     return Positioned(
-      top: widget.position == ToastPosition.top
-          ? topPadding + 16
-          : null,
+      top: widget.position == ToastPosition.top ? topPadding + 16 : null,
       bottom: widget.position == ToastPosition.bottom
           ? bottomPadding + 16
           : null,
@@ -302,10 +292,7 @@ class _ToastWidgetState extends State<_ToastWidget>
                         color: config.color.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Icon(config.icon,
-                          color: config.color,
-                          size: 24
-                      ),
+                      child: Icon(config.icon, color: config.color, size: 24),
                     ),
 
                     const SizedBox(width: 12),

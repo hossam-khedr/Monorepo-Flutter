@@ -1,7 +1,6 @@
-enum LoginStatus{init,loading,error,success}
+enum LoginStatus { init, loading, error, success }
 
-
-class LoginStats{
+class LoginStats {
   final String errorMessage;
   final LoginStatus loginStatus;
   final String? userRole;
@@ -9,8 +8,8 @@ class LoginStats{
   LoginStats({
     this.errorMessage = '',
     this.loginStatus = LoginStatus.init,
-    this.userRole
-});
+    this.userRole,
+  });
 
   bool get isLoading => loginStatus == LoginStatus.loading;
   bool get isError => loginStatus == LoginStatus.error;
@@ -19,12 +18,12 @@ class LoginStats{
   LoginStats copyWith({
     final String? errorMessage,
     final LoginStatus? loginStatus,
-    final String? userRole
-}){
+    final String? userRole,
+  }) {
     return LoginStats(
       errorMessage: errorMessage ?? this.errorMessage,
-       loginStatus: loginStatus ?? this.loginStatus,
-      userRole: userRole ?? this.userRole
+      loginStatus: loginStatus ?? this.loginStatus,
+      userRole: userRole ?? this.userRole,
     );
   }
 }

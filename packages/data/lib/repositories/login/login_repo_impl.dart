@@ -14,13 +14,18 @@ class LoginRepoEmpl implements LoginRepo {
     required String email,
     required String password,
   }) async {
-  return ApiCallHelper().safeApiCall(callback: ()async{
-    final response = await loginRemoteDataSource.login(email: email, password: password);
-    final token = response.data['data']['token'];
-    final userRole = response.data['data']['user']['role'];
-   await CacheHelper.setData(ApiConstants.tokenKey, token);
-   print("DATA: $token");
-   return userRole;
-  });
+    return ApiCallHelper().safeApiCall(
+      callback: () async {
+        final response = await loginRemoteDataSource.login(
+          email: email,
+          password: password,
+        );
+        final token = response.data['data']['token'];
+        final userRole = response.data['data']['user']['role'];
+        await CacheHelper.setData(ApiConstants.tokenKey, token);
+        print("DATA: $token");
+        return userRole;
+      },
+    );
   }
 }

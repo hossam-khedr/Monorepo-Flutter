@@ -1,4 +1,3 @@
-
 import 'package:core/utils/dialog_helper.dart';
 import 'package:core/utils/navigation_helper.dart';
 import 'package:core/utils/toast_helper.dart';
@@ -7,15 +6,13 @@ import 'package:employee/core/routing/employee_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:login/core/password_form_field.dart';
-import 'package:login/core/responsive_helper.dart';
+import 'package:core/utils/responsive_helper.dart';
 import 'package:login/login_feature/logic/cubit.dart';
 import 'package:login/login_feature/logic/state.dart';
 import 'package:theme/theming/colors/light_colors.dart';
 
 class LoginScreen extends StatefulWidget {
-
-
-  const LoginScreen({super.key,});
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -25,7 +22,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final formKey = GlobalKey<FormState>();
-
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  _handelLoginState(BuildContext context,LoginStats state){
+  _handelLoginState(BuildContext context, LoginStats state) {
     if (state.isLoading) {
       DialogHelper.showLoading(context);
     }
@@ -146,13 +142,12 @@ class _LoginScreenState extends State<LoginScreen> {
     if (state.isSuccess) {
       NavigationHelper.pop(context);
       if (state.userRole == 'employee') {
-        NavigationHelper.pushNamedAndRemoveUntil(
-          context,
-          EmployeeRoute.root,
-        );
+        NavigationHelper.pushNamedAndRemoveUntil(context, EmployeeRoute.root);
       } else {
         ToastHelper.error(
-            context, 'هذا الحساب خاص بالإدارة.\nيرجى استخدام تطبيق HR');
+          context,
+          'هذا الحساب خاص بالإدارة.\nيرجى استخدام تطبيق HR',
+        );
       }
     }
   }

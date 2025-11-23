@@ -5,16 +5,13 @@ import 'package:theme/theming/colors/dark_colors.dart';
 import 'app_typo_graphy.dart';
 import 'custom_theme_extension.dart';
 
-
-class DarkTheme{
+class DarkTheme {
   DarkTheme._();
 
-  static ThemeData getDarkTheme(){
-    final theme =  ThemeData(
+  static ThemeData getDarkTheme() {
+    final theme = ThemeData(
       useMaterial3: true,
-      extensions: [
-        CustomDialogTheme.dark()
-      ],
+      extensions: [CustomDialogTheme.dark()],
       scaffoldBackgroundColor: DarkColors.darkBackground,
       brightness: Brightness.dark,
       appBarTheme: AppBarTheme(
@@ -23,25 +20,18 @@ class DarkTheme{
         elevation: 2,
       ),
       cardTheme: CardThemeData(
-          color: DarkColors.cardColorDark,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16)
-          )
+        color: DarkColors.cardColorDark,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
-          style:ElevatedButton.styleFrom(
-            backgroundColor: DarkColors.blow,
-              padding: EdgeInsets.symmetric(
-                  vertical: 12,
-                  horizontal: 24
-              ),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: DarkColors.blow,
+          padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
 
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)
-              )
-          )
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        ),
       ),
-      textTheme:  TextTheme(
+      textTheme: TextTheme(
         headlineLarge: AppTypography.titleLarge(DarkColors.fontColorDark),
         headlineMedium: AppTypography.titleMedium(DarkColors.fontColorDark),
         headlineSmall: AppTypography.titleSmall(DarkColors.fontColorDark),
@@ -53,7 +43,10 @@ class DarkTheme{
       inputDecorationTheme: InputDecorationTheme(
         hintStyle: AppTypography.bodyMedium(DarkColors.fontColorDark),
         labelStyle: AppTypography.bodyMedium(DarkColors.fontColorDark),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 12,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(color: DarkColors.gray),
@@ -80,10 +73,8 @@ class DarkTheme{
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
       ),
-
     );
 
     return theme;
   }
 }
-

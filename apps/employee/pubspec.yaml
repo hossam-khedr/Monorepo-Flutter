@@ -29,7 +29,12 @@ dependencies:
 # State Managment
   flutter_bloc: ^9.1.1
   equatable: ^2.0.7
+
+# Local Storge
   shared_preferences: ^2.5.3
+
+# dependency management
+  get_it: ^9.0.5
 
 
   cupertino_icons: ^1.0.8

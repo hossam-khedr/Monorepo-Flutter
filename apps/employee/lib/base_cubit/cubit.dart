@@ -10,7 +10,9 @@ import '../core/routing/employee_route.dart';
 
 class BaseCubit extends Cubit<BaseAppStats> {
   BaseCubit()
-    : super(BaseAppStats(appThemeMode: AppThemeMode.system, isDarkMode: false)){
+    : super(
+        BaseAppStats(appThemeMode: AppThemeMode.system, isDarkMode: false),
+      ) {
     _loadTheme();
   }
 
@@ -27,47 +29,44 @@ class BaseCubit extends Cubit<BaseAppStats> {
     }
   }
 
-  Future<void>saveMode(AppThemeMode mode)async{
-    try{
+  Future<void> saveMode(AppThemeMode mode) async {
+    try {
       final prefs = await SharedPreferences.getInstance();
       prefs.setString('app_theme_mode', mode.name);
-    }catch(e){
+    } catch (e) {
       debugPrint('Error saving theme: $e');
     }
   }
+
   bool getSystemBrightness() {
     return WidgetsBinding.instance.platformDispatcher.platformBrightness ==
         Brightness.dark;
   }
 
-  Future<void>_loadTheme()async{
+  Future<void> _loadTheme() async {
     final saveMode = await getSavedTheme();
     final isDark = _calculateIsDark(saveMode);
-    emit(state.copyWith(appThemeMode: saveMode,isDarkMode: isDark));
+    emit(state.copyWith(appThemeMode: saveMode, isDarkMode: isDark));
   }
 
-  Future<void>changeTheme(AppThemeMode mode)async{
-final isDark = _calculateIsDark(mode);
-emit(state.copyWith(isDarkMode: isDark,appThemeMode: mode));
-await saveMode(mode);
+  Future<void> changeTheme(AppThemeMode mode) async {
+    final isDark = _calculateIsDark(mode);
+    emit(state.copyWith(isDarkMode: isDark, appThemeMode: mode));
+    await saveMode(mode);
   }
 
-  void toggleTheme(){
-    final newMode = state.isDarkMode?
-        AppThemeMode.light
-        :AppThemeMode.dark;
+  void toggleTheme() {
+    final newMode = state.isDarkMode ? AppThemeMode.light : AppThemeMode.dark;
     changeTheme(newMode);
   }
 
   void updateSystemBrightness() {
     if (state.appThemeMode == AppThemeMode.system) {
-      emit(state.copyWith(
-        isDarkMode: getSystemBrightness(),
-      ));
+      emit(state.copyWith(isDarkMode: getSystemBrightness()));
     }
   }
 
-   ThemeMode toThemeMode(AppThemeMode mode) {
+  ThemeMode toThemeMode(AppThemeMode mode) {
     switch (mode) {
       case AppThemeMode.light:
         return ThemeMode.light;
@@ -77,7 +76,6 @@ await saveMode(mode);
         return ThemeMode.system;
     }
   }
-
 
   bool _calculateIsDark(AppThemeMode mode) {
     switch (mode) {
@@ -90,13 +88,15 @@ await saveMode(mode);
     }
   }
 
-  String? checedEmployeeLogdIin(){
+  String? checedEmployeeLogdIin() {
     final token = CacheHelper.getString(ApiConstants.tokenKey);
     print(token);
     if (token != null) {
       return EmployeeRoute.root;
-    } else{
+    } else {
       return EmployeeRoute.login;
     }
   }
+
+
 }

@@ -1,4 +1,6 @@
-import 'package:employee/app/responsive_helper.dart';
+
+import 'package:core/utils/responsive_helper.dart';
+
 import 'package:employee/home/widgets/home_card.dart';
 import 'package:employee/home/widgets/quick_procedures.dart';
 import 'package:employee/home/widgets/recent_activities.dart';
@@ -10,7 +12,15 @@ class HomeScreen extends StatelessWidget {
   final void Function()? onAudience;
   final void Function()? onHolidays;
   final void Function()? onSalary;
-  const HomeScreen({super.key, this.onProfile, this.onAudience, this.onHolidays, this.onSalary});
+  final void Function()? onPassword;
+
+  const HomeScreen({
+    super.key,
+    this.onProfile,
+    this.onAudience,
+    this.onHolidays,
+    this.onSalary, this.onPassword,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +34,8 @@ class HomeScreen extends StatelessWidget {
           children: [
             GridView.count(
               shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                crossAxisCount: 2,
+              physics: NeverScrollableScrollPhysics(),
+              crossAxisCount: 2,
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
               childAspectRatio: 0.83,
@@ -70,20 +80,17 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: context.responsive.screenHeight * 0.04,),
+            SizedBox(height: context.responsive.screenHeight * 0.04),
             RecentActivities(),
-            SizedBox(height: context.responsive.screenHeight * 0.04,),
+            SizedBox(height: context.responsive.screenHeight * 0.04),
             QuickProcedures(
               onProfile: onProfile,
               onHolidays: onHolidays,
+              onPassword: onPassword
             ),
-
           ],
         ),
       ),
     );
   }
 }
-
-
-

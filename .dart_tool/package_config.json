@@ -176,6 +176,12 @@
       "languageVersion": "3.8"
     },
     {
+      "name": "get_it",
+      "rootUri": "file:///C:/Users/abdalla%20shiha/AppData/Local/Pub/Cache/hosted/pub.dev/get_it-9.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "glob",
       "rootUri": "file:///C:/Users/abdalla%20shiha/AppData/Local/Pub/Cache/hosted/pub.dev/glob-2.1.3",
       "packageUri": "lib/",
@@ -206,10 +212,22 @@
       "languageVersion": "2.15"
     },
     {
+      "name": "intl",
+      "rootUri": "file:///C:/Users/abdalla%20shiha/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.20.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
       "name": "io",
       "rootUri": "file:///C:/Users/abdalla%20shiha/AppData/Local/Pub/Cache/hosted/pub.dev/io-1.0.5",
       "packageUri": "lib/",
       "languageVersion": "3.4"
+    },
+    {
+      "name": "jiffy",
+      "rootUri": "file:///C:/Users/abdalla%20shiha/AppData/Local/Pub/Cache/hosted/pub.dev/jiffy-6.4.4",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "json_annotation",
@@ -372,6 +390,12 @@
       "rootUri": "file:///C:/Users/abdalla%20shiha/AppData/Local/Pub/Cache/hosted/pub.dev/pubspec_parse-1.5.0",
       "packageUri": "lib/",
       "languageVersion": "3.6"
+    },
+    {
+      "name": "quiver",
+      "rootUri": "file:///C:/Users/abdalla%20shiha/AppData/Local/Pub/Cache/hosted/pub.dev/quiver-3.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "shared_preferences",

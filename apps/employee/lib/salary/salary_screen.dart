@@ -5,6 +5,6 @@ class SalaryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Salary'),);
+    return Center(child: Text('Salary'));
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
 
 enum ScreenSize { mobile, tablet, desktop }
 
@@ -102,8 +102,7 @@ class ResponsiveHelper {
   );
 }
 
-
-extension ResponsiveContext on BuildContext{
+extension ResponsiveContext on BuildContext {
   ResponsiveHelper get responsive => ResponsiveHelper(this);
 
   bool get isMobile => responsive.isMobile;
@@ -117,11 +116,19 @@ extension ResponsiveContext on BuildContext{
     required double mobile,
     double? tablet,
     double? desktop,
-  }) => responsive.responsiveValue(mobile: mobile, tablet: tablet, desktop: desktop);
+  }) => responsive.responsiveValue(
+    mobile: mobile,
+    tablet: tablet,
+    desktop: desktop,
+  );
 
   Widget responsiveWidget({
     required Widget mobile,
     Widget? tablet,
     Widget? desktop,
-  }) => responsive.responsiveWidget(mobile: mobile, tablet: tablet, desktop: desktop);
+  }) => responsive.responsiveWidget(
+    mobile: mobile,
+    tablet: tablet,
+    desktop: desktop,
+  );
 }

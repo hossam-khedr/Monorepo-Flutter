@@ -1,7 +1,8 @@
 import 'package:core/utils/dialog_helper.dart';
+import 'package:core/utils/navigation_helper.dart';
 import 'package:employee/app/app_icon.dart';
 import 'package:employee/app/app_strings.dart';
-import 'package:employee/app/responsive_helper.dart';
+import 'package:core/utils/responsive_helper.dart';
 import 'package:employee/audience/audience_screen.dart';
 import 'package:employee/chats/chats_screen.dart';
 import 'package:employee/holidays/holidays_screen.dart';
@@ -11,10 +12,12 @@ import 'package:employee/root/cubit/cubit.dart';
 import 'package:employee/root/cubit/state.dart';
 import 'package:employee/salary/salary_screen.dart';
 import 'package:employee/widgets/build_navigator.dart';
-import 'package:employee/widgets/custom_app_bar.dart';
+import 'package:shared_ui/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../core/routing/employee_route.dart';
 
 class RootScreen extends StatefulWidget {
   const RootScreen({super.key});
@@ -26,7 +29,15 @@ class RootScreen extends StatefulWidget {
 class _RootScreenState extends State<RootScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<RootCubit, RootStates>(
+    return BlocConsumer<RootCubit, RootStates>(
+      listener: (context, state) {
+        if (state.isUserLoggedOut) {
+          NavigationHelper.pushNamedAndRemoveUntil(
+            context,
+            EmployeeRoute.login,
+          );
+        }
+      },
       builder: (context, state) {
         return PopScope(
           canPop: false,
@@ -38,7 +49,7 @@ class _RootScreenState extends State<RootScreen> {
                 message: 'هل تريد الخروج؟',
                 onConfirm: () => SystemNavigator.pop(),
                 barrierDismissible: true,
-                buttonText: 'نعم'
+                buttonText: 'نعم',
               );
             }
             context.read<RootCubit>().handleBackPressed();
@@ -64,10 +75,18 @@ class _RootScreenState extends State<RootScreen> {
                       index: 0,
                       navigatorKeys: state.navigatorKeys,
                       child: HomeScreen(
-                        onAudience:() => context.read<RootCubit>().selectedIndex(1),
-                        onProfile: ()=> context.read<RootCubit>().selectedIndex(5),
-                        onHolidays:()=>context.read<RootCubit>().selectedIndex(2) ,
-                        onSalary:()=>context.read<RootCubit>().selectedIndex(3) ,
+                        onAudience: () =>
+                            context.read<RootCubit>().selectedIndex(1),
+                        onProfile: () =>
+                            context.read<RootCubit>().selectedIndex(5),
+                        onHolidays: () =>
+                            context.read<RootCubit>().selectedIndex(2),
+                        onSalary: () =>
+                            context.read<RootCubit>().selectedIndex(3),
+                        onPassword: () => NavigationHelper.pushNamed(
+                          context,
+                          EmployeeRoute.changePassword,
+                        ),
                       ),
                     ),
                     BuildNavigator(
@@ -93,7 +112,14 @@ class _RootScreenState extends State<RootScreen> {
                     BuildNavigator(
                       index: 5,
                       navigatorKeys: state.navigatorKeys,
-                      child: ProfileScreen(),
+                      child: ProfileScreen(
+                        onUpdate: () {},
+                        onPassword: () => NavigationHelper.pushNamed(
+                          context,
+                          EmployeeRoute.changePassword,
+                        ),
+                        onLogout: () => context.read<RootCubit>().logout(),
+                      ),
                     ),
                   ],
                 ),

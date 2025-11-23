@@ -1,21 +1,21 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-class CacheHelper{
+class CacheHelper {
   static SharedPreferences? sharedPref;
-  static Future<void> initCacheHelper()async{
+  static Future<void> initCacheHelper() async {
     sharedPref = await SharedPreferences.getInstance();
   }
-  static Future<dynamic>getData(String key) async {
-    return  sharedPref?.get(key);
-  }
-  static String?getString(String key){
 
+  static Future<dynamic> getData(String key) async {
+    return sharedPref?.get(key);
+  }
+
+  static String? getString(String key) {
     return sharedPref?.getString(key);
   }
 
-  static Future<bool?>setData(String key,dynamic value)async{
-
-    switch(value){
+  static Future<bool?> setData(String key, dynamic value) async {
+    switch (value) {
       case String _:
         return await sharedPref?.setString(key, value);
       case bool _:
@@ -26,13 +26,10 @@ class CacheHelper{
         return await sharedPref?.setInt(key, value);
       default:
         throw Exception("Unsupported value type: ${value.runtimeType}");
-
     }
-
   }
 
-  static Future<bool?>removeData(String key)async{
-
+  static Future<bool?> removeData(String key) async {
     return await sharedPref?.remove(key);
   }
 }

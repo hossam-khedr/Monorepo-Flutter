@@ -1,4 +1,4 @@
-class AppStrings{
+class AppStrings {
   static const home = 'الرئسيه';
   static const audience = 'الحضور';
   static const holidays = 'الاجازات';

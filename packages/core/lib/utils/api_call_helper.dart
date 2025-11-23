@@ -1,12 +1,10 @@
-
-
 import 'package:dartz/dartz.dart';
 
 import '../error/error_handler.dart';
 import '../error/faliure.dart';
 import '../network/network_info.dart';
 
-class ApiCallHelper{
+class ApiCallHelper {
   final NetworkInfoImpl networkInfoImpl = NetworkInfoImpl();
 
   Future<Either<Failure, T>> safeApiCall<T>({

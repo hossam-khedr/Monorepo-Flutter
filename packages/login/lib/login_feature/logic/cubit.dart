@@ -17,9 +17,10 @@ class LoginCubit extends Cubit<LoginStats> {
         ),
       ),
       (userRole) {
-
-        emit(state.copyWith(loginStatus: LoginStatus.success,userRole: userRole));
-      }
+        emit(
+          state.copyWith(loginStatus: LoginStatus.success, userRole: userRole),
+        );
+      },
     );
   }
 }

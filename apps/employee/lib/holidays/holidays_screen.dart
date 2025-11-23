@@ -5,6 +5,6 @@ class HolidaysScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Holidays'),);
+    return Center(child: Text('Holidays'));
   }
 }

@@ -4,13 +4,13 @@ import 'package:theme/theming/custom_theme_extension.dart';
 class DialogHelper {
   // Success Dialog
   static Future<void> success(
-      BuildContext context, {
-        required String message,
-        String? title,
-        String buttonText = 'حسناً',
-        VoidCallback? onConfirm,
-        bool barrierDismissible = false,
-      }) {
+    BuildContext context, {
+    required String message,
+    String? title,
+    String buttonText = 'حسناً',
+    VoidCallback? onConfirm,
+    bool barrierDismissible = false,
+  }) {
     final theme = context.dialogTheme;
     return _showCustomDialog(
       context,
@@ -27,13 +27,13 @@ class DialogHelper {
 
   // Error Dialog
   static Future<void> error(
-      BuildContext context, {
-        required String message,
-        String? title,
-        String buttonText = 'حسناً',
-        VoidCallback? onConfirm,
-        bool barrierDismissible = false,
-      }) {
+    BuildContext context, {
+    required String message,
+    String? title,
+    String buttonText = 'حسناً',
+    VoidCallback? onConfirm,
+    bool barrierDismissible = false,
+  }) {
     final theme = context.dialogTheme;
     return _showCustomDialog(
       context,
@@ -50,13 +50,13 @@ class DialogHelper {
 
   // Warning Dialog
   static Future<void> warning(
-      BuildContext context, {
-        required String message,
-        String? title,
-        String buttonText = 'فهمت',
-        VoidCallback? onConfirm,
-        bool barrierDismissible = false,
-      }) {
+    BuildContext context, {
+    required String message,
+    String? title,
+    String buttonText = 'فهمت',
+    VoidCallback? onConfirm,
+    bool barrierDismissible = false,
+  }) {
     final theme = context.dialogTheme;
     return _showCustomDialog(
       context,
@@ -73,13 +73,13 @@ class DialogHelper {
 
   // Info Dialog
   static Future<void> info(
-      BuildContext context, {
-        required String message,
-        String? title,
-        String buttonText = 'حسناً',
-        VoidCallback? onConfirm,
-        bool barrierDismissible = false,
-      }) {
+    BuildContext context, {
+    required String message,
+    String? title,
+    String buttonText = 'حسناً',
+    VoidCallback? onConfirm,
+    bool barrierDismissible = false,
+  }) {
     final theme = context.dialogTheme;
     return _showCustomDialog(
       context,
@@ -96,15 +96,15 @@ class DialogHelper {
 
   // Confirm Dialog
   static Future<bool> confirm(
-      BuildContext context, {
-        required String message,
-        String? title,
-        String confirmText = 'تأكيد',
-        String cancelText = 'إلغاء',
-        Color? confirmColor,
-        Color? cancelColor,
-        bool barrierDismissible = true,
-      }) async {
+    BuildContext context, {
+    required String message,
+    String? title,
+    String confirmText = 'تأكيد',
+    String cancelText = 'إلغاء',
+    Color? confirmColor,
+    Color? cancelColor,
+    bool barrierDismissible = true,
+  }) async {
     final theme = context.dialogTheme;
     final result = await showAdaptiveDialog<bool>(
       context: context,
@@ -123,15 +123,15 @@ class DialogHelper {
 
   // Custom Dialog
   static Future<void> custom(
-      BuildContext context, {
-        required String message,
-        required String title,
-        required IconData icon,
-        required Color color,
-        required String buttonText,
-        VoidCallback? onConfirm,
-        bool barrierDismissible = false,
-      }) {
+    BuildContext context, {
+    required String message,
+    required String title,
+    required IconData icon,
+    required Color color,
+    required String buttonText,
+    VoidCallback? onConfirm,
+    bool barrierDismissible = false,
+  }) {
     return _showCustomDialog(
       context,
       type: DialogType.custom,
@@ -147,16 +147,16 @@ class DialogHelper {
 
   // Show Custom Dialog
   static Future<void> _showCustomDialog(
-      BuildContext context, {
-        required DialogType type,
-        required String title,
-        required String message,
-        required IconData icon,
-        required Color color,
-        required String buttonText,
-        VoidCallback? onConfirm,
-        bool barrierDismissible = false,
-      }) {
+    BuildContext context, {
+    required DialogType type,
+    required String title,
+    required String message,
+    required IconData icon,
+    required Color color,
+    required String buttonText,
+    VoidCallback? onConfirm,
+    bool barrierDismissible = false,
+  }) {
     return showAdaptiveDialog(
       context: context,
       barrierDismissible: barrierDismissible,
@@ -247,13 +247,15 @@ class _CustomDialogState extends State<_CustomDialog>
       vsync: this,
     );
 
-    _scaleAnimation = Tween<double>(begin: 0.8, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOutBack),
-    );
+    _scaleAnimation = Tween<double>(
+      begin: 0.8,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
 
-    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
+    _fadeAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _controller.forward();
@@ -282,9 +284,7 @@ class _CustomDialogState extends State<_CustomDialog>
         child: ScaleTransition(
           scale: _scaleAnimation,
           child: Dialog(
-            shape: RoundedRectangleBorder(
-              borderRadius: theme.borderRadius,
-            ),
+            shape: RoundedRectangleBorder(borderRadius: theme.borderRadius),
             elevation: theme.elevation,
             backgroundColor: Colors.transparent,
             child: Container(
@@ -315,9 +315,7 @@ class _CustomDialogState extends State<_CustomDialog>
                   // Title
                   Text(
                     widget.title,
-                    style: theme.titleTextStyle.copyWith(
-                      color: widget.color,
-                    ),
+                    style: theme.titleTextStyle.copyWith(color: widget.color),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 12),
@@ -396,13 +394,15 @@ class _ConfirmDialogState extends State<_ConfirmDialog>
       vsync: this,
     );
 
-    _scaleAnimation = Tween<double>(begin: 0.8, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOutBack),
-    );
+    _scaleAnimation = Tween<double>(
+      begin: 0.8,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
 
-    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
+    _fadeAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _controller.forward();
@@ -429,9 +429,7 @@ class _ConfirmDialogState extends State<_ConfirmDialog>
         child: ScaleTransition(
           scale: _scaleAnimation,
           child: Dialog(
-            shape: RoundedRectangleBorder(
-              borderRadius: theme.borderRadius,
-            ),
+            shape: RoundedRectangleBorder(borderRadius: theme.borderRadius),
             elevation: theme.elevation,
             backgroundColor: Colors.transparent,
             child: Container(
@@ -548,9 +546,7 @@ class _LoadingDialog extends StatelessWidget {
       child: Semantics(
         label: 'Loading dialog',
         child: Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: theme.borderRadius,
-          ),
+          shape: RoundedRectangleBorder(borderRadius: theme.borderRadius),
           elevation: theme.elevation,
           backgroundColor: Colors.transparent,
           child: Container(
@@ -569,9 +565,7 @@ class _LoadingDialog extends StatelessWidget {
                   height: 40,
                   child: CircularProgressIndicator(
                     strokeWidth: 3,
-                    valueColor: AlwaysStoppedAnimation<Color>(
-                      theme.infoColor,
-                    ),
+                    valueColor: AlwaysStoppedAnimation<Color>(theme.infoColor),
                   ),
                 ),
 
