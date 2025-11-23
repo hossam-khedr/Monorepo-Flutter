@@ -4,7 +4,11 @@ import 'package:theme/theming/colors/light_colors.dart';
 class PasswordFormField extends StatefulWidget {
   final TextEditingController passwordController;
   final String? Function(String?)? validator;
-  const PasswordFormField({super.key, required this.passwordController, this.validator});
+  const PasswordFormField({
+    super.key,
+    required this.passwordController,
+    this.validator,
+  });
 
   @override
   State<PasswordFormField> createState() => _PasswordFormFieldState();
@@ -16,10 +20,9 @@ class _PasswordFormFieldState extends State<PasswordFormField> {
   @override
   Widget build(BuildContext context) {
     return StatefulBuilder(
-      builder: (context, sateState) =>
-          TextFormField(
-            validator: widget.validator,
-            controller: widget.passwordController,
+      builder: (context, sateState) => TextFormField(
+        validator: widget.validator,
+        controller: widget.passwordController,
         obscureText: initValue,
         decoration: InputDecoration(
           hintText: 'ادخل كلمة المرور',

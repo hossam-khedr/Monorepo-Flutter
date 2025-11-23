@@ -1,4 +1,4 @@
-import 'package:employee/app/responsive_helper.dart';
+import 'package:core/utils/responsive_helper.dart';
 import 'package:flutter/material.dart';
 
 class CustomSlider extends StatefulWidget {
@@ -6,13 +6,11 @@ class CustomSlider extends StatefulWidget {
   final double min;
   final double max;
 
-
   const CustomSlider({
     super.key,
     required this.value,
     this.min = 0.0,
     this.max = 100.0,
-
   });
 
   @override
@@ -75,6 +73,4 @@ class _CustomSliderState extends State<CustomSlider> {
       ),
     );
   }
-
-
 }

@@ -1,4 +1,4 @@
-abstract class EmployeeRoute{
+abstract class EmployeeRoute {
   static const String login = 'login';
   static const String root = 'root';
   static const String chat = 'chat';

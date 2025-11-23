@@ -175,8 +175,16 @@ class CustomDialogTheme extends ThemeExtension<CustomDialogTheme> {
       warningColor: Color.lerp(warningColor, other.warningColor, t)!,
       infoColor: Color.lerp(infoColor, other.infoColor, t)!,
       titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t)!,
-      messageTextStyle: TextStyle.lerp(messageTextStyle, other.messageTextStyle, t)!,
-      buttonTextStyle: TextStyle.lerp(buttonTextStyle, other.buttonTextStyle, t)!,
+      messageTextStyle: TextStyle.lerp(
+        messageTextStyle,
+        other.messageTextStyle,
+        t,
+      )!,
+      buttonTextStyle: TextStyle.lerp(
+        buttonTextStyle,
+        other.buttonTextStyle,
+        t,
+      )!,
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t)!,
       elevation: lerpDouble(elevation, other.elevation, t)!,
       iconSize: lerpDouble(iconSize, other.iconSize, t)!,

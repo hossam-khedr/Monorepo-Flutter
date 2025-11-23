@@ -1,10 +1,8 @@
 class Validator {
-
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'البريد الإلكتروني مطلوب';
     }
-
 
     final emailRegex = RegExp(
       r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
@@ -21,7 +19,6 @@ class Validator {
     return null;
   }
 
-
   static String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
       return 'كلمة المرور مطلوبة';
@@ -35,21 +32,17 @@ class Validator {
       return 'كلمة المرور طويلة جداً (الحد الأقصى 50 حرف)';
     }
 
-
     if (!value.contains(RegExp(r'[A-Z]'))) {
       return 'كلمة المرور يجب أن تحتوي على حرف كبير واحد على الأقل';
     }
-
 
     if (!value.contains(RegExp(r'[a-z]'))) {
       return 'كلمة المرور يجب أن تحتوي على حرف صغير واحد على الأقل';
     }
 
-
     if (!value.contains(RegExp(r'[0-9]'))) {
       return 'كلمة المرور يجب أن تحتوي على رقم واحد على الأقل';
     }
-
 
     if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
       return 'كلمة المرور يجب أن تحتوي على رمز خاص واحد على الأقل';
@@ -57,7 +50,6 @@ class Validator {
 
     return null;
   }
-
 
   static String? validateName(String? value) {
     if (value == null || value.isEmpty) {
@@ -74,7 +66,6 @@ class Validator {
       return 'الاسم طويل جداً (الحد الأقصى 50 حرف)';
     }
 
-
     final nameRegex = RegExp(r'^[\u0600-\u06FFa-zA-Z\s\-]+$');
     if (!nameRegex.hasMatch(trimmedValue)) {
       return 'الاسم يجب أن يحتوي على أحرف فقط';
@@ -83,11 +74,10 @@ class Validator {
     return null;
   }
 
-
   static String? validatePasswordConfirmation(
-      String? password,
-      String? confirmPassword,
-      ) {
+    String? password,
+    String? confirmPassword,
+  ) {
     if (confirmPassword == null || confirmPassword.isEmpty) {
       return 'تأكيد كلمة المرور مطلوب';
     }
@@ -98,7 +88,6 @@ class Validator {
 
     return null;
   }
-
 
   static String? validatePhone(String? value) {
     if (value == null || value.isEmpty) {
@@ -113,7 +102,6 @@ class Validator {
     return null;
   }
 
-
   static String? validateRequired(String? value, String fieldName) {
     if (value == null || value.isEmpty) {
       return '$fieldName مطلوب';
@@ -121,33 +109,31 @@ class Validator {
     return null;
   }
 
-
-static String? validateMinLength(
+  static String? validateMinLength(
     String? value,
     int minLength,
     String fieldName,
-    ) {
-  if (value == null || value.isEmpty) {
-    return '$fieldName مطلوب';
+  ) {
+    if (value == null || value.isEmpty) {
+      return '$fieldName مطلوب';
+    }
+
+    if (value.length < minLength) {
+      return '$fieldName يجب أن يكون $minLength أحرف على الأقل';
+    }
+
+    return null;
   }
 
-  if (value.length < minLength) {
-    return '$fieldName يجب أن يكون $minLength أحرف على الأقل';
-  }
-
-  return null;
-}
-
-
-static String? validateMaxLength(
+  static String? validateMaxLength(
     String? value,
     int maxLength,
     String fieldName,
-    ) {
-  if (value != null && value.length > maxLength) {
-    return '$fieldName طويل جداً (الحد الأقصى $maxLength حرف)';
-  }
+  ) {
+    if (value != null && value.length > maxLength) {
+      return '$fieldName طويل جداً (الحد الأقصى $maxLength حرف)';
+    }
 
-  return null;
-}
+    return null;
+  }
 }

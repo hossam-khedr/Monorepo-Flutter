@@ -1,4 +1,4 @@
-class EmployeeConfig{
+class EmployeeConfig {
   static const List<String> allowedRoles = ['employee'];
 
   static bool isRoleAllowed(String userRole) {

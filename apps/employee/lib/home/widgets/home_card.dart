@@ -1,4 +1,4 @@
-import 'package:employee/app/responsive_helper.dart';
+import 'package:core/utils/responsive_helper.dart';
 import 'package:employee/home/widgets/custom_slider.dart';
 import 'package:flutter/material.dart';
 

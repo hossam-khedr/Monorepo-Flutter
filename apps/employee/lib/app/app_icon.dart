@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-abstract class AppIcons{
+abstract class AppIcons {
   static const IconData home = Icons.home_filled;
   static const IconData time = Icons.access_time;
   static const IconData calendar = Icons.calendar_month;

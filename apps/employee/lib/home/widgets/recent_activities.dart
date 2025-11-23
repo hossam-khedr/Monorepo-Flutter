@@ -1,5 +1,5 @@
 import 'package:employee/app/app_icon.dart';
-import 'package:employee/app/responsive_helper.dart';
+import 'package:core/utils/responsive_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:theme/theming/colors/light_colors.dart';
 
@@ -12,13 +12,16 @@ class RecentActivities extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: context.responsive.screenHeight *0.01,),
+          SizedBox(height: context.responsive.screenHeight * 0.01),
           Padding(
-            padding:  EdgeInsets.symmetric(
-              horizontal: context.screenWidth *0.05,
-              vertical: context.screenHeight *0.005,
+            padding: EdgeInsets.symmetric(
+              horizontal: context.screenWidth * 0.05,
+              vertical: context.screenHeight * 0.005,
             ),
-            child: Text('الأنشطة الأخيرة', style: Theme.of(context).textTheme.titleMedium),
+            child: Text(
+              'الأنشطة الأخيرة',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
           ),
           Divider(),
           ActivitiesRow(
@@ -28,7 +31,7 @@ class RecentActivities extends StatelessWidget {
             subTitle: 'منذ ساعتين',
             avatarColor: LightColors.green,
           ),
-         SizedBox(height: context.responsive.screenHeight * 0.02,),
+          SizedBox(height: context.responsive.screenHeight * 0.02),
           ActivitiesRow(
             icon: AppIcons.time,
             iconColor: LightColors.blow,
@@ -36,7 +39,7 @@ class RecentActivities extends StatelessWidget {
             subTitle: 'اليوم 9:00 ص',
             avatarColor: LightColors.blow,
           ),
-          SizedBox(height: context.responsive.screenHeight * 0.02,),
+          SizedBox(height: context.responsive.screenHeight * 0.02),
           ActivitiesRow(
             icon: AppIcons.monetization,
             iconColor: LightColors.orange,
@@ -70,9 +73,9 @@ class ActivitiesRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Padding(
-      padding:  EdgeInsets.symmetric(
-        horizontal: context.screenWidth *0.05,
-        vertical: context.screenHeight *0.005,
+      padding: EdgeInsets.symmetric(
+        horizontal: context.screenWidth * 0.05,
+        vertical: context.screenHeight * 0.005,
       ),
       child: Row(
         spacing: context.responsive.screenWidth * 0.02,
