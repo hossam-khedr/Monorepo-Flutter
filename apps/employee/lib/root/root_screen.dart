@@ -3,7 +3,6 @@ import 'package:core/utils/navigation_helper.dart';
 import 'package:employee/app/app_icon.dart';
 import 'package:employee/app/app_strings.dart';
 import 'package:core/utils/responsive_helper.dart';
-import 'package:employee/audience/audience_screen.dart';
 import 'package:employee/chats/chats_screen.dart';
 import 'package:employee/holidays/holidays_screen.dart';
 import 'package:employee/home/home_screen.dart';
@@ -17,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../attendance/attendance_screen.dart';
 import '../core/routing/employee_route.dart';
 
 class RootScreen extends StatefulWidget {
@@ -92,7 +92,7 @@ class _RootScreenState extends State<RootScreen> {
                     BuildNavigator(
                       index: 1,
                       navigatorKeys: state.navigatorKeys,
-                      child: AudienceScreen(),
+                      child: AttendanceScreen(),
                     ),
                     BuildNavigator(
                       index: 2,

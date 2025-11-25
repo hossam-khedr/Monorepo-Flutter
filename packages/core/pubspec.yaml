@@ -31,6 +31,10 @@ dependencies:
   jiffy: ^6.4.4
 
 
+# LocationService
+  geolocator: ^14.0.2
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

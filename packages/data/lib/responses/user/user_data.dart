@@ -1,5 +1,5 @@
-import 'package:data/responses/department_response.dart';
-import 'package:data/responses/leave_balance_response.dart';
+import 'package:data/responses/department/department_response.dart';
+import 'package:data/responses/leave/leave_balance_response.dart';
 
 class UserData {
   final String id;

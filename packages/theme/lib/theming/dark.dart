@@ -32,9 +32,9 @@ class DarkTheme {
         ),
       ),
       textTheme: TextTheme(
-        headlineLarge: AppTypography.titleLarge(DarkColors.fontColorDark),
-        headlineMedium: AppTypography.titleMedium(DarkColors.fontColorDark),
-        headlineSmall: AppTypography.titleSmall(DarkColors.fontColorDark),
+        titleLarge: AppTypography.titleLarge(DarkColors.fontColorDark),
+        titleMedium: AppTypography.titleMedium(DarkColors.fontColorDark),
+        titleSmall: AppTypography.titleSmall(DarkColors.fontColorDark),
         bodyLarge: AppTypography.bodyLarge(DarkColors.fontColorDark),
         bodyMedium: AppTypography.bodyMedium(DarkColors.fontColorDark),
         bodySmall: AppTypography.bodySmall(DarkColors.fontColorDark),

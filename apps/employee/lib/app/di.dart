@@ -4,6 +4,7 @@ import 'package:data/repositories/login/login_repo.dart';
 import 'package:data/repositories/login/login_repo_impl.dart';
 import 'package:data/repositories/profile/profile_repo.dart';
 import 'package:data/repositories/profile/profile_repo_impl.dart';
+import 'package:employee/attendance/logic/cubit.dart';
 import 'package:employee/profile/logic/cubit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:data/repositories/change_password/password_repo.dart';
@@ -11,6 +12,9 @@ import 'package:data/repositories/change_password/password_repo_impl.dart';
 import 'package:data/data_soures/remote/change_password_remote_data_source.dart';
 import 'package:login/change_password/logic/cubit.dart';
 import 'package:login/login_feature/logic/cubit.dart';
+import 'package:data/data_soures/remote/attendance_remote_data_source.dart';
+import 'package:data/repositories/attendance/attendance_repo.dart';
+import 'package:data/repositories/attendance/attendance_repo_impl.dart';
 
 final getIt = GetIt.instance;
 
@@ -48,3 +52,15 @@ Future<void> initPasswordDependence() async {
   );
   getIt.registerFactory<PasswordCubit>(() => PasswordCubit(repo: getIt()));
 }
+
+// AttendanceDependence
+Future<void> initAttendanceDependence() async {
+  getIt.registerFactory<AttendanceRemoteDataSource>(
+        () => AttendanceRemoteDataSource(),
+  );
+  getIt.registerFactory<AttendanceRepo>(
+        () => AttendanceRepoImpl(remoteDataSource: getIt()),
+  );
+  getIt.registerFactory<AttendanceCubit>(() => AttendanceCubit(repo: getIt()));
+}
+

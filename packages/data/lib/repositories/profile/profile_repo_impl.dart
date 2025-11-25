@@ -3,7 +3,7 @@ import 'package:core/utils/api_call_helper.dart';
 import 'package:dartz/dartz.dart';
 import 'package:data/data_soures/remote/profile_remote_data_source.dart';
 import 'package:data/repositories/profile/profile_repo.dart';
-import 'package:data/responses/user_response.dart';
+import 'package:data/responses/user/user_response.dart';
 
 class ProfileRepoImpl implements ProfileRepo {
   final ProfileRemoteDataSource dataSource;

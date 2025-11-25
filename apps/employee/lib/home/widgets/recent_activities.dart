@@ -87,8 +87,8 @@ class ActivitiesRow extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title, style: theme.textTheme.titleMedium),
-              Text(subTitle, style: theme.textTheme.titleSmall),
+              Text(title, style: theme.textTheme.bodyMedium),
+              Text(subTitle, style: theme.textTheme.bodySmall),
             ],
           ),
         ],

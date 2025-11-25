@@ -78,12 +78,12 @@ class DioHelper {
     Map<String, dynamic>? query,
     String? token,
     Map<String, String>? headers,
-    bool requiresAuth = true, // إضافة flag
+    bool requiresAuth = true,
   }) async {
     try {
       final options = Options(
         headers: headers,
-        extra: {'requiresAuth': requiresAuth}, // تمرير الـ flag
+        extra: {'requiresAuth': requiresAuth},
       );
 
       if (token != null) {
@@ -110,12 +110,12 @@ class DioHelper {
     Map<String, dynamic>? query,
     String? token,
     Map<String, String>? headers,
-    bool requiresAuth = true, // إضافة flag
+    bool requiresAuth = true,
   }) async {
     try {
       final options = Options(
         headers: headers,
-        extra: {'requiresAuth': requiresAuth}, // تمرير الـ flag
+        extra: {'requiresAuth': requiresAuth},
       );
 
       if (token != null) {
@@ -142,12 +142,12 @@ class DioHelper {
     Map<String, dynamic>? query,
     String? token,
     Map<String, String>? headers,
-    bool requiresAuth = true, // إضافة flag
+    bool requiresAuth = true,
   }) async {
     try {
       final options = Options(
         headers: headers,
-        extra: {'requiresAuth': requiresAuth}, // تمرير الـ flag
+        extra: {'requiresAuth': requiresAuth},
       );
 
       if (token != null) {
@@ -175,11 +175,11 @@ class DioHelper {
     Map<String, dynamic>? data,
     String? token,
     ProgressCallback? onSendProgress,
-    bool requiresAuth = true, // إضافة flag
+    bool requiresAuth = true,
   }) async {
     try {
       final options = Options(
-        extra: {'requiresAuth': requiresAuth}, // تمرير الـ flag
+        extra: {'requiresAuth': requiresAuth},
       );
 
       if (token != null) {
@@ -221,10 +221,9 @@ class ApiInterceptor extends Interceptor {
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     debugPrint('🔵 Request: ${options.method} ${options.uri}');
 
-    // إضافة التوكن فقط إذا لم يكن موجود في الـ headers بالفعل
-    // وإذا كان الطلب يحتاج مصادقة (requiresAuth flag)
+
     if (!options.headers.containsKey('Authorization')) {
-      // التحقق من الـ flag (افتراضياً true)
+
       final requiresAuth = options.extra['requiresAuth'] ?? true;
 
       if (requiresAuth) {
@@ -250,7 +249,7 @@ class ApiInterceptor extends Interceptor {
   void onError(DioException err, ErrorInterceptorHandler handler) async {
     debugPrint('❌ Error: ${err.response?.statusCode} ${err.requestOptions.uri}');
 
-    // معالجة خطأ 401 (Unauthorized)
+
     if (err.response?.statusCode == 401) {
 
       final isRefreshRequest = err.requestOptions.path.contains('refresh') ||
@@ -263,45 +262,45 @@ class ApiInterceptor extends Interceptor {
       }
       final tokenManager = TokenManager();
 
-      // التحقق من وجود token
+
       if (tokenManager.token != null) {
         try {
           debugPrint('🔄 Attempting to refresh token...');
 
-          // محاولة تحديث التوكن
+
           final newToken = await tokenManager.refreshToken();
 
           if (newToken != null) {
             debugPrint('✅ Token refreshed successfully');
 
-            // إعادة محاولة الطلب بالتوكن الجديد
+
             final requestOptions = err.requestOptions;
             requestOptions.headers['Authorization'] = 'Bearer $newToken';
 
-            // إعادة الطلب
+
             final response = await _dio.fetch(requestOptions);
             return handler.resolve(response);
           } else {
-            // فشل تحديث التوكن
+
             debugPrint('❌ Token refresh failed');
             await _handleAuthFailure();
             return handler.reject(err);
           }
         } catch (e) {
-          // خطأ في تحديث التوكن
+
           debugPrint('❌ Error refreshing token: $e');
           await _handleAuthFailure();
           return handler.reject(err);
         }
       } else {
-        // لا يوجد token
+
         debugPrint('❌ No token found');
         await _handleAuthFailure();
         return handler.reject(err);
       }
     }
 
-    // معالجة باقي أنواع الأخطاء
+
     _handleDioException(err);
 
     super.onError(err, handler);
@@ -363,8 +362,7 @@ class ApiInterceptor extends Interceptor {
 
   Future<void> _handleAuthFailure() async {
     await TokenManager().clearToken();
-    // يمكنك هنا توجيه المستخدم لصفحة تسجيل الدخول
-    // مثال: navigatorKey.currentState?.pushNamedAndRemoveUntil('/login', (route) => false);
+
   }
 }
 

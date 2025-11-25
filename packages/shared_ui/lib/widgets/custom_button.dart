@@ -1,5 +1,6 @@
 import 'package:core/utils/responsive_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:theme/theming/app_typo_graphy.dart';
 
 class CustomButton extends StatelessWidget {
   final double? height;
@@ -18,11 +19,7 @@ class CustomButton extends StatelessWidget {
     this.buttonColor,
     required this.text,
     this.icon,
-    this.textStyle = const TextStyle(
-      color: Colors.white,
-      fontWeight: FontWeight.bold,
-      fontSize: 14,
-    ),
+    this.textStyle ,
     this.isIconShow = false,
     this.onPressed,
   });
@@ -30,7 +27,7 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: height?? context.responsive.screenHeight * 0.06,
+      height: height?? context.responsive.screenHeight * 0.055,
       width: width,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
@@ -40,8 +37,9 @@ class CustomButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(text, style: textStyle),
             ?isIconShow == true ? icon : null,
+            Text(text, style: textStyle?? AppTypography.button(Colors.white)),
+
           ],
         ),
       ),
