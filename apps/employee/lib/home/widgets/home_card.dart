@@ -1,6 +1,7 @@
 import 'package:core/utils/responsive_helper.dart';
 import 'package:employee/home/widgets/custom_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_ui/widgets/custom_button.dart';
 
 class HomeCard extends StatelessWidget {
   final String title;
@@ -41,22 +42,7 @@ class HomeCard extends StatelessWidget {
             Text(title, style: theme.textTheme.titleMedium),
             Text(subTitle, style: theme.textTheme.labelSmall),
             isButtonShow
-                ? SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: buttonColor,
-                      ),
-                      onPressed: onPressed,
-                      child: Text(
-                        textButton ?? "",
-                        overflow: TextOverflow.ellipsis,
-                        style: theme.textTheme.titleSmall!.copyWith(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  )
+                ? CustomButton(text: title,buttonColor: buttonColor,onPressed: onPressed,)
                 : CustomSlider(value: 50),
           ],
         ),

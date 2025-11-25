@@ -31,9 +31,9 @@ class LightTheme {
         ),
       ),
       textTheme: TextTheme(
-        headlineLarge: AppTypography.titleLarge(LightColors.fontColor),
-        headlineMedium: AppTypography.titleMedium(LightColors.fontColor),
-        headlineSmall: AppTypography.titleSmall(LightColors.fontColor),
+        titleLarge: AppTypography.titleLarge(LightColors.fontColor),
+        titleMedium: AppTypography.titleMedium(LightColors.fontColor),
+        titleSmall: AppTypography.titleSmall(LightColors.fontColor),
         bodyLarge: AppTypography.bodyLarge(LightColors.fontColor),
         bodyMedium: AppTypography.bodyMedium(LightColors.fontColor),
         bodySmall: AppTypography.bodySmall(LightColors.fontColor),

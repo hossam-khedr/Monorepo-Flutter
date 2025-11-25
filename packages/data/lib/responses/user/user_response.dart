@@ -1,6 +1,6 @@
-import 'package:data/responses/department_response.dart';
-import 'package:data/responses/leave_balance_response.dart';
-import 'package:data/responses/user_data.dart';
+import 'package:data/responses/department/department_response.dart';
+import 'package:data/responses/leave/leave_balance_response.dart';
+import 'package:data/responses/user/user_data.dart';
 
 class UserResponse {
   final UserData userData;

@@ -1,6 +1,6 @@
 import 'package:core/utils/date_formetter.dart';
-import 'package:data/responses/user_data.dart';
 import 'package:core/utils/responsive_helper.dart';
+import 'package:data/responses/user/user_data.dart';
 import 'package:employee/profile/widgets/row_informition.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,7 @@ class WorkInformition extends StatelessWidget {
           spacing: context.responsive.screenHeight * 0.02,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('معلومات العمل', style: theme.textTheme.titleLarge),
+            Text('معلومات العمل', style: theme.textTheme.titleMedium),
             RowInformetion(hint: 'رقم الموظف', data: userData.employeeCode),
             RowInformetion(hint: 'القسم', data: userData.department.nameArabic),
             RowInformetion(

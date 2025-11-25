@@ -36,6 +36,9 @@ dependencies:
 # dependency management
   get_it: ^9.0.5
 
+ # Location Service
+  geolocator: ^14.0.2
+
 
   cupertino_icons: ^1.0.8
 

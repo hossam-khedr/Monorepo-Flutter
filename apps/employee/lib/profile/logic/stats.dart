@@ -1,4 +1,5 @@
-import 'package:data/responses/user_response.dart';
+
+import 'package:data/responses/user/user_response.dart';
 
 enum ProfileStatus { init, loading, error, success,userLoggedOut }
 

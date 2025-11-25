@@ -12,6 +12,7 @@ void main() async {
   );
   await CacheHelper.initCacheHelper();
   await initProfileDependence();
+  await initAttendanceDependence();
   DioHelper.init();
   runApp(const EmployeeApp());
 }

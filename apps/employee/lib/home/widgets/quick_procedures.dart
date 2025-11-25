@@ -97,7 +97,7 @@ class QuickColumn extends StatelessWidget {
               backgroundColor: avatarColor.withAlpha(40),
               child: Icon(icon, color: iconColor),
             ),
-            Text(title, style: Theme.of(context).textTheme.titleSmall),
+            Text(title, style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
       ),

@@ -38,7 +38,7 @@ class UpdateProfile extends StatelessWidget {
             ),
             Text(
               "${stats.response!.userData.firstName} ${stats.response!.userData.lastName}",
-              style: theme.textTheme.titleLarge,
+              style: theme.textTheme.titleMedium,
             ),
             Text(
               stats.response!.userData.position,

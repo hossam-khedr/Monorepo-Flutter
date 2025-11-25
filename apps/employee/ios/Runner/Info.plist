@@ -11,6 +11,10 @@
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
+	<key>UIBackgroundModes</key>
+    <array>
+      <string>location</string>
+    </array>
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>employee</string>
