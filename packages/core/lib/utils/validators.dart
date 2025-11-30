@@ -50,7 +50,12 @@ class Validator {
 
     return null;
   }
-
+static String? fieldRequerd(String? value){
+  if (value == null || value.isEmpty) {
+    return 'هذه الحقل مطلوب';
+  }
+  return null;
+}
   static String? validateName(String? value) {
     if (value == null || value.isEmpty) {
       return 'الاسم مطلوب';

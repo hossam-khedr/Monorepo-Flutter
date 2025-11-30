@@ -1,5 +1,6 @@
 import 'package:core/constants/api_constants.dart';
 import 'package:core/utils/cache_helper.dart';
+import 'package:employee/leaves/widgets/leave_request.dart';
 import 'package:employee/root/cubit/state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -56,13 +57,13 @@ class RootCubit extends Cubit<RootStates> {
     }
   }
 
-  Widget? getActionWidget() {
+  Widget? getActionWidget({Function()? onLeaveRequest}) {
     switch (state.ccurrentIndex) {
       case 0:
         return IconButton(icon: Icon(Icons.notifications), onPressed: () {});
 
       case 2:
-        return IconButton(icon: Icon(Icons.add), onPressed: () {});
+        return CreateLeaveRequest(onLeaveRequest:onLeaveRequest,);
       case 5:
         return IconButton(icon: Icon(Icons.edit), onPressed: () {});
       default:

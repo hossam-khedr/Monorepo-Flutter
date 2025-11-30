@@ -9,4 +9,7 @@ abstract class AppIcons {
   static const IconData person = Icons.person_outline;
   static const IconData check = Icons.check;
   static const IconData lock = Icons.lock;
+  static const IconData add = Icons.add;
+  static const IconData medicalServices = Icons.medical_services;
+  static const IconData close = Icons.close;
 }

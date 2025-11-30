@@ -100,6 +100,12 @@ class ResponsiveHelper {
     left: mediaQuery.padding.left,
     right: mediaQuery.padding.right,
   );
+
+  EdgeInsets  symmetricPadding({double horizontal = 0,double vertical = 0})
+  => EdgeInsets.symmetric(
+    horizontal: horizontal * screenWidth / 100,
+    vertical: vertical * screenHeight / 100
+  );
 }
 
 extension ResponsiveContext on BuildContext {
@@ -111,7 +117,8 @@ extension ResponsiveContext on BuildContext {
   bool get isPortrait => responsive.isPortrait;
   double get screenWidth => responsive.screenWidth;
   double get screenHeight => responsive.screenHeight;
-
+  EdgeInsets  symmetricPadding({double horizontal = 0,double vertical = 0})=>
+  responsive.symmetricPadding(vertical: vertical,horizontal: horizontal);
   double responsiveValue({
     required double mobile,
     double? tablet,
