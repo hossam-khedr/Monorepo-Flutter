@@ -4,8 +4,8 @@ import 'package:employee/app/app_icon.dart';
 import 'package:employee/app/app_strings.dart';
 import 'package:core/utils/responsive_helper.dart';
 import 'package:employee/chats/chats_screen.dart';
-import 'package:employee/holidays/holidays_screen.dart';
 import 'package:employee/home/home_screen.dart';
+import 'package:employee/leaves/leaves_screen.dart';
 import 'package:employee/profile/profile_screen.dart';
 import 'package:employee/root/cubit/cubit.dart';
 import 'package:employee/root/cubit/state.dart';
@@ -61,7 +61,12 @@ class _RootScreenState extends State<RootScreen> {
                 onBackPressed: context.read<RootCubit>().handleBackPressed,
                 showAction: context.read<RootCubit>().shouldShowAction(),
                 title: context.read<RootCubit>().getTitle(state.ccurrentIndex),
-                action: context.read<RootCubit>().getActionWidget(),
+                action: context.read<RootCubit>().getActionWidget(
+                  onLeaveRequest: () => NavigationHelper.pushNamed(
+                    context,
+                    EmployeeRoute.createLeave,
+                  ),
+                ),
               ),
               body: Padding(
                 padding: EdgeInsets.symmetric(
@@ -97,7 +102,7 @@ class _RootScreenState extends State<RootScreen> {
                     BuildNavigator(
                       index: 2,
                       navigatorKeys: state.navigatorKeys,
-                      child: HolidaysScreen(),
+                      child: LeavesScreen(),
                     ),
                     BuildNavigator(
                       index: 3,

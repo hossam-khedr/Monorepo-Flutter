@@ -1,5 +1,7 @@
-
 import 'package:employee/core/routing/employee_route.dart';
+import 'package:employee/leaves/create_leave/create_leave_screen.dart';
+import 'package:employee/leaves/leave_details/leave_details_screen.dart';
+import 'package:employee/leaves/logic/cubit.dart';
 import 'package:employee/root/cubit/cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,6 +41,15 @@ class GenerateRoute {
             create: (_) => RootCubit(),
           ),
         );
+
+      case EmployeeRoute.createLeave:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            child: const CreateLeaveScreen(),
+            create: (_) => getIt<LeavesCubit>(),
+          ),
+        );
+
     }
     return null;
   }
