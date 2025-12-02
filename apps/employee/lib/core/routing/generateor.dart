@@ -1,3 +1,4 @@
+import 'package:employee/chats/chat_rome/chat_rome_screen.dart';
 import 'package:employee/core/routing/employee_route.dart';
 import 'package:employee/leaves/create_leave/create_leave_screen.dart';
 import 'package:employee/leaves/leave_details/leave_details_screen.dart';
@@ -49,7 +50,8 @@ class GenerateRoute {
             create: (_) => getIt<LeavesCubit>(),
           ),
         );
-
+      case EmployeeRoute.chatRome:
+        return MaterialPageRoute(builder: (_)=> const ChatRomeScreen());
     }
     return null;
   }

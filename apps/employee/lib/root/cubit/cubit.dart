@@ -47,10 +47,8 @@ class RootCubit extends Cubit<RootStates> {
       case 2:
         return AppStrings.holidays;
       case 3:
-        return AppStrings.salary;
-      case 4:
         return AppStrings.chats;
-      case 5:
+      case 4:
         return AppStrings.profile;
       default:
         return '';
