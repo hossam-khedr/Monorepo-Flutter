@@ -86,8 +86,6 @@ class _RootScreenState extends State<RootScreen> {
                             context.read<RootCubit>().selectedIndex(5),
                         onHolidays: () =>
                             context.read<RootCubit>().selectedIndex(2),
-                        onSalary: () =>
-                            context.read<RootCubit>().selectedIndex(3),
                         onPassword: () => NavigationHelper.pushNamed(
                           context,
                           EmployeeRoute.changePassword,
@@ -107,15 +105,15 @@ class _RootScreenState extends State<RootScreen> {
                     BuildNavigator(
                       index: 3,
                       navigatorKeys: state.navigatorKeys,
-                      child: SalaryScreen(),
+                      child: ChatsScreen(
+                        onChatRome: () => NavigationHelper.pushNamed(
+                          context,
+                          EmployeeRoute.chatRome,
+                        ),
+                      ),
                     ),
                     BuildNavigator(
                       index: 4,
-                      navigatorKeys: state.navigatorKeys,
-                      child: ChatsScreen(),
-                    ),
-                    BuildNavigator(
-                      index: 5,
                       navigatorKeys: state.navigatorKeys,
                       child: ProfileScreen(
                         onUpdate: () {},
@@ -147,10 +145,7 @@ class _RootScreenState extends State<RootScreen> {
                     icon: Icon(AppIcons.calendar),
                     label: AppStrings.holidays,
                   ),
-                  BottomNavigationBarItem(
-                    icon: Icon(AppIcons.monetization),
-                    label: AppStrings.salary,
-                  ),
+
                   BottomNavigationBarItem(
                     icon: Icon(AppIcons.chat),
                     label: AppStrings.chats,

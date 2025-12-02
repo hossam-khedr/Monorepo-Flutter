@@ -61,16 +61,6 @@ class HomeScreen extends StatelessWidget {
                   textButton: 'طلب اجازه',
                 ),
                 HomeCard(
-                  isButtonShow: true,
-                  title: 'الراتب',
-                  subTitle: 'هذا الشهر',
-                  buttonColor: LightColors.orange,
-                  iconColor: LightColors.orange,
-                  icon: Icons.monetization_on_outlined,
-                  onPressed: onSalary,
-                  textButton: 'عرض التفاصيل',
-                ),
-                HomeCard(
                   isButtonShow: false,
                   title: 'الإحصائيات',
                   subTitle: 'هذا الشهر: 22 يوم',
