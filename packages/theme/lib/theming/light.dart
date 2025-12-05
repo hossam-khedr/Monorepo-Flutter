@@ -13,7 +13,7 @@ class LightTheme {
     final theme = ThemeData(
       useMaterial3: true,
       extensions: [CustomDialogTheme.light()],
-      scaffoldBackgroundColor: LightColors.background,
+      scaffoldBackgroundColor: AppColors.backgroundColor,
       brightness: Brightness.light,
       appBarTheme: AppBarTheme(
         backgroundColor: LightColors.cardColor,

@@ -23,7 +23,7 @@ class EmployeeApp extends StatelessWidget {
             // themeMode: context.read<BaseCubit>().toThemeMode(
             //   state.appThemeMode,
             // ),
-            initialRoute:EmployeeRoute.changePassword,
+            initialRoute:EmployeeRoute.root,
             //context.read<BaseCubit>().checedEmployeeLogdIin(),
 
             onGenerateRoute: GenerateRoute.onGenerateRoute,

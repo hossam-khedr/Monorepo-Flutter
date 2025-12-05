@@ -1,7 +1,11 @@
 import 'package:core/constants/api_constants.dart';
 import 'package:core/utils/cache_helper.dart';
+import 'package:employee/attendance/attendance_screen.dart';
+import 'package:employee/home/home_screen.dart';
+import 'package:employee/leaves/leaves_screen.dart';
 import 'package:employee/leaves/widgets/leave_request.dart';
 import 'package:employee/root/cubit/state.dart';
+import 'package:employee/salary/salary_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:core/utils/dialog_helper.dart';
@@ -88,4 +92,11 @@ class RootCubit extends Cubit<RootStates> {
     await CacheHelper.removeData(ApiConstants.tokenKey);
     emit(state.copyWith(rootStatus: RootStatus.userLoggedOut,));
   }
+
+  List<Widget> screens = [
+    HomeScreen(),
+    AttendanceScreen(),
+    SalaryScreen(),
+    LeavesScreen()
+  ];
 }

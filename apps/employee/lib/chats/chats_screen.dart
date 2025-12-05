@@ -9,24 +9,26 @@ class ChatsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SearchChats(),
-        SizedBox(height: context.responsive.spacingS),
-        const Divider(),
+    return Scaffold(
+      body: Column(
+        children: [
+          const SearchChats(),
+          SizedBox(height: context.responsive.spacingS),
+          const Divider(),
 
-        Expanded(
-          child: ListView.separated(
-            itemCount: 4,
-            separatorBuilder: (context,index)=>const Divider(),
+          Expanded(
+            child: ListView.separated(
+              itemCount: 4,
+              separatorBuilder: (context,index)=>const Divider(),
 
-            itemBuilder: (context,index)=>
-            ContactItem(
-              onChatRome: onChatRome,
+              itemBuilder: (context,index)=>
+                  ContactItem(
+                    onChatRome: onChatRome,
+                  ),
             ),
           ),
-        ),
-      ],
+        ],
+      )
     );
   }
 }
