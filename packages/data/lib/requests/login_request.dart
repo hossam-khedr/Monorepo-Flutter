@@ -1,5 +1,5 @@
 class LoginRequest {
-  final String email;
+  final String nationalId;
   final String password;
-  LoginRequest({required this.email, required this.password});
+  LoginRequest({required this.nationalId, required this.password});
 }

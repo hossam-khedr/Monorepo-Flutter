@@ -1,14 +1,21 @@
+import 'package:core/constants/app_strings.dart';
+import 'package:core/constants/svg_icons.dart';
 import 'package:core/utils/dialog_helper.dart';
 import 'package:core/utils/navigation_helper.dart';
 import 'package:core/utils/toast_helper.dart';
 import 'package:core/utils/validators.dart';
+import 'package:data/requests/login_request.dart';
 import 'package:employee/core/routing/employee_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:login/core/nachonal_id_form_field.dart';
 import 'package:login/core/password_form_field.dart';
 import 'package:core/utils/responsive_helper.dart';
 import 'package:login/login_feature/logic/cubit.dart';
 import 'package:login/login_feature/logic/state.dart';
+import 'package:shared_ui/widgets/asset_icon.dart';
+import 'package:shared_ui/widgets/custom_button.dart';
+import 'package:theme/theming/colors/app_colors.dart';
 import 'package:theme/theming/colors/light_colors.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -20,116 +27,110 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
+  final TextEditingController nationalIdIdController = TextEditingController();
   final formKey = GlobalKey<FormState>();
-
+@override
+  void dispose() {
+    passwordController.dispose();
+    nationalIdIdController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: context.responsive.screenWidth * 0.04,
-              vertical: context.responsive.screenHeight * 0.04,
+    return Scaffold(
+      backgroundColor: AppColors.blue900,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            AssetIcon(
+              assetName: SvgIcons.employeeLogo,
+              width: context.responsive.screenWidth * 0.4,
+              height: context.responsive.screenHeight * 0.3,
             ),
-            child: Form(
-              key: formKey,
-              child: Column(
-                children: [
-                  SizedBox(height: context.responsive.screenHeight * 0.090),
-                  Icon(Icons.h_mobiledata, size: 100, color: LightColors.blow),
-                  Text('تسجيل الدخول', style: theme.textTheme.titleLarge),
-                  Text(
-                    'مرحباً بك في تطبيق الموارد البشرية',
-                    style: theme.textTheme.bodyMedium,
-                  ),
-                  SizedBox(height: context.responsive.screenHeight * 0.04),
-                  Card(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: context.responsive.screenWidth * 0.06,
-                        vertical: context.responsive.screenHeight * 0.04,
-                      ),
-                      child: BlocListener<LoginCubit, LoginStats>(
-                        listener: (context, state) =>
-                            _handelLoginState(context, state),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'البريد الإلكتروني',
-                              style: theme.textTheme.bodyMedium,
-                            ),
-                            TextFormField(
-                              controller: emailController,
-                              decoration: InputDecoration(
-                                hintText: 'ادخل البريد الالكتروني',
-                                prefixIcon: Icon(Icons.email_outlined),
-                              ),
-                              validator: (value) =>
-                                  Validator.validateEmail(value),
-                            ),
-                            SizedBox(
-                              height: context.responsive.screenHeight * 0.03,
-                            ),
-                            Text(
-                              'كلمة المرور',
-                              style: theme.textTheme.bodyMedium,
-                            ),
-                            PasswordFormField(
-                              passwordController: passwordController,
-                              validator: (value) =>
-                                  Validator.validatePassword(value),
-                            ),
-                            SizedBox(
-                              height: context.responsive.screenHeight * 0.06,
-                            ),
-                            ElevatedButton(
-                              onPressed: () {
-                                if (formKey.currentState!.validate()) {
-                                  context.read<LoginCubit>().login(
-                                    email: emailController.text,
-                                    password: passwordController.text,
-                                  );
-                                }
-                              },
-                              child: Row(
-                                spacing: context.responsive.screenWidth * 0.01,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.login,
-                                    color: Colors.white,
-                                    size: 25,
-                                  ),
-                                  Text(
-                                    'تسجيل الدخول',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: context.responsive.fontSize(18),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
+            SizedBox(height: context.responsive.screenHeight * 0.20),
+            Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(40),
+                  topLeft: Radius.circular(40),
+                ),
+              ),
+              margin: EdgeInsets.zero,
+              color: AppColors.whit,
+              child: Padding(
+                padding: context.responsive.symmetricPadding(
+                  horizontal: 6.0,
+                  vertical: 4.0,
+                ),
+                child: Form(
+                  key: formKey,
+                  child: BlocListener<LoginCubit, LoginStats>(
+                    listener: (context, state) =>
+                        _handelLoginState(context, state),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Align(
+                          alignment: AlignmentDirectional.topCenter,
+                          child: Text(
+                            AppStrings.singIn,
+                            style: theme.textTheme.headlineSmall,
+                          ),
                         ),
-                      ),
+                        Align(
+                          alignment: AlignmentDirectional.topCenter,
+                          child: Text(
+                            AppStrings.singInHint,
+                            style: theme.textTheme.labelLarge,
+                          ),
+                        ),
+                        SizedBox(height: context.responsive.spacingL),
+                        Text(
+                          AppStrings.employeeId,
+                          style: theme.textTheme.bodySmall,
+                        ),
+                        NachonalIdFormField(
+                          nationalIdIdController: nationalIdIdController,
+                          validator: (v)=> Validator.validateNachonalId(v),
+                        ),
+                        SizedBox(height: context.responsive.spacingL),
+                        Text(
+                          AppStrings.password,
+                          style: theme.textTheme.bodySmall,
+                        ),
+                        PasswordFormField(
+                          passwordController: passwordController,
+                          validator: (v)=>Validator.validatePassword(v),
+                        ),
+                        SizedBox(height: context.responsive.spacingXXL),
+                        CustomButton(
+                          text: AppStrings.singIn,
+                          onPressed: () {
+                            if (formKey.currentState!.validate()) {
+                              context.read<LoginCubit>().login(
+                                loginRequest: LoginRequest(
+                                  nationalId: nationalIdIdController.text,
+                                  password: passwordController.text,
+                                ),
+                              );
+                            }
+                          },
+                        ),
+                        SizedBox(height: context.responsive.spacingM,)
+                      ],
                     ),
                   ),
-                  SizedBox(height: context.responsive.screenHeight * 0.03),
-                  Text('© 2024 تطبيق الموارد البشرية. جميع الحقوق محفوظة'),
-                ],
+                ),
               ),
             ),
-          ),
+
+          ],
         ),
       ),
     );
   }
+
 
   _handelLoginState(BuildContext context, LoginStats state) {
     if (state.isLoading) {
@@ -143,10 +144,13 @@ class _LoginScreenState extends State<LoginScreen> {
       NavigationHelper.pop(context);
       if (state.userRole == 'employee') {
         NavigationHelper.pushNamedAndRemoveUntil(context, EmployeeRoute.root);
-      } else {
+      }else if (state.userRole == 'HR'){
+
+      }
+      else {
         ToastHelper.error(
           context,
-          'هذا الحساب خاص بالإدارة.\nيرجى استخدام تطبيق HR',
+          AppStrings.roleErrorMessage,
         );
       }
     }

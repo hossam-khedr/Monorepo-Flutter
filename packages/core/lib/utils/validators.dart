@@ -4,6 +4,7 @@ class Validator {
       return 'البريد الإلكتروني مطلوب';
     }
 
+
     final emailRegex = RegExp(
       r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
     );
@@ -19,43 +20,46 @@ class Validator {
     return null;
   }
 
+
   static String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
-      return 'كلمة المرور مطلوبة';
+      return 'Password required';
     }
 
     if (value.length < 8) {
-      return 'كلمة المرور يجب أن تكون 8 أحرف على الأقل';
+      return 'The password must be at least 8 characters long.';
     }
 
     if (value.length > 50) {
-      return 'كلمة المرور طويلة جداً (الحد الأقصى 50 حرف)';
+      return 'The password is too long (maximum 50 characters)';
     }
 
     if (!value.contains(RegExp(r'[A-Z]'))) {
-      return 'كلمة المرور يجب أن تحتوي على حرف كبير واحد على الأقل';
+      return 'The password must contain at least one capital letter.';
     }
 
     if (!value.contains(RegExp(r'[a-z]'))) {
-      return 'كلمة المرور يجب أن تحتوي على حرف صغير واحد على الأقل';
+      return 'The password must contain at least one lowercase letter.';
     }
 
     if (!value.contains(RegExp(r'[0-9]'))) {
-      return 'كلمة المرور يجب أن تحتوي على رقم واحد على الأقل';
+      return 'The password must contain at least one number.';
     }
 
     if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
-      return 'كلمة المرور يجب أن تحتوي على رمز خاص واحد على الأقل';
+      return 'The password must contain at least one special character.';
     }
 
     return null;
   }
-static String? fieldRequerd(String? value){
-  if (value == null || value.isEmpty) {
-    return 'هذه الحقل مطلوب';
+
+  static String? fieldRequerd(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'هذه الحقل مطلوب';
+    }
+    return null;
   }
-  return null;
-}
+
   static String? validateName(String? value) {
     if (value == null || value.isEmpty) {
       return 'الاسم مطلوب';
@@ -79,16 +83,14 @@ static String? fieldRequerd(String? value){
     return null;
   }
 
-  static String? validatePasswordConfirmation(
-    String? password,
-    String? confirmPassword,
-  ) {
+  static String? validatePasswordConfirmation(String? password,
+      String? confirmPassword,) {
     if (confirmPassword == null || confirmPassword.isEmpty) {
-      return 'تأكيد كلمة المرور مطلوب';
+      return 'Confirm Password required';
     }
 
     if (password != confirmPassword) {
-      return 'كلمة المرور غير متطابقة';
+      return 'The password does not match';
     }
 
     return null;
@@ -114,11 +116,9 @@ static String? fieldRequerd(String? value){
     return null;
   }
 
-  static String? validateMinLength(
-    String? value,
-    int minLength,
-    String fieldName,
-  ) {
+  static String? validateMinLength(String? value,
+      int minLength,
+      String fieldName,) {
     if (value == null || value.isEmpty) {
       return '$fieldName مطلوب';
     }
@@ -130,15 +130,28 @@ static String? fieldRequerd(String? value){
     return null;
   }
 
-  static String? validateMaxLength(
-    String? value,
-    int maxLength,
-    String fieldName,
-  ) {
+  static String? validateMaxLength(String? value,
+      int maxLength,
+      String fieldName,) {
     if (value != null && value.length > maxLength) {
       return '$fieldName طويل جداً (الحد الأقصى $maxLength حرف)';
     }
 
     return null;
   }
+
+
+  static String? validateNachonalId(String? value) {
+    if (value == null || value.isEmpty ) {
+      return 'Field Is Required';
+    }
+    if(value.length < 14){
+      return 'Id Must be 14 number';
+    }
+    return null;
+  }
+
 }
+
+
+
