@@ -1,5 +1,6 @@
 import 'package:employee/base_cubit/cubit.dart';
 import 'package:employee/base_cubit/states.dart';
+import 'package:employee/core/routing/employee_route.dart';
 import 'package:employee/core/routing/generateor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,11 +19,13 @@ class EmployeeApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: LightTheme.getLightTheme(),
-            darkTheme: DarkTheme.getDarkTheme(),
-            themeMode: context.read<BaseCubit>().toThemeMode(
-              state.appThemeMode,
-            ),
-            initialRoute: context.read<BaseCubit>().checedEmployeeLogdIin(),
+            //darkTheme: DarkTheme.getDarkTheme(),
+            // themeMode: context.read<BaseCubit>().toThemeMode(
+            //   state.appThemeMode,
+            // ),
+            initialRoute:EmployeeRoute.changePassword,
+            //context.read<BaseCubit>().checedEmployeeLogdIin(),
+
             onGenerateRoute: GenerateRoute.onGenerateRoute,
           );
         },

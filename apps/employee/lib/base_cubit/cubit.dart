@@ -90,7 +90,6 @@ class BaseCubit extends Cubit<BaseAppStats> {
 
   String? checedEmployeeLogdIin() {
     final token = CacheHelper.getString(ApiConstants.tokenKey);
-    print(token);
     if (token != null) {
       return EmployeeRoute.root;
     } else {

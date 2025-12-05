@@ -37,7 +37,7 @@ class AppTypography {
   );
 
   static TextStyle bodyMedium([Color? color]) => _applyColor(
-    GoogleFonts.cairo(fontSize: 14, fontWeight: FontWeight.normal, height: 1.4),
+    GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.normal, height: 1.4),
 
     color,
   );
@@ -51,6 +51,20 @@ class AppTypography {
   /// Caption / Notes
   static TextStyle caption([Color? color]) => _applyColor(
     GoogleFonts.cairo(fontSize: 11, fontWeight: FontWeight.w300, height: 1.3),
+
+    color,
+  );
+
+  static TextStyle labelLarge([Color? color]) => _applyColor(
+    GoogleFonts.cairo(fontSize: 14, fontWeight: FontWeight.w400, height: 1.3),
+
+    color,
+  );
+
+
+
+  static TextStyle headlineSmall([Color? color]) => _applyColor(
+    GoogleFonts.cairo(fontSize: 24, fontWeight: FontWeight.bold, height: 1.3),
 
     color,
   );
