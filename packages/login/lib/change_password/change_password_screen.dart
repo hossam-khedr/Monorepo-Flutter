@@ -1,20 +1,13 @@
 import 'package:core/constants/app_strings.dart';
-import 'package:core/constants/svg_icons.dart';
 import 'package:core/utils/responsive_helper.dart';
-import 'package:core/utils/validators.dart';
 import 'package:data/requests/change_password_request.dart';
+import 'package:login/change_password/widgets/change_password_submeted.dart';
+import 'package:shared_ui/widgets/app_bar_back_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:login/change_password/logic/cubit.dart';
-import 'package:login/change_password/logic/state.dart';
 import 'package:login/change_password/widgets/change_password_form.dart';
-import 'package:login/change_password/widgets/look_icon.dart';
-
-import 'package:core/utils/dialog_helper.dart';
-import 'package:core/utils/navigation_helper.dart';
-import 'package:core/utils/toast_helper.dart';
-import 'package:shared_ui/widgets/asset_icon.dart';
-import 'package:theme/theming/colors/app_colors.dart';
+import 'package:shared_ui/widgets/custom_button.dart';
 
 class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({super.key});
@@ -40,64 +33,57 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.blue900,
+      appBar: AppBar(
+        title: Text(AppStrings.changePassword),
+        leading: AppBarBackButton(),
+      ),
       body: SingleChildScrollView(
-        child: BlocListener<PasswordCubit, PasswordStats>(
-          listener: (context, state) {
-            if (state.isLoading) {
-              DialogHelper.showLoading(context);
-            }
-            if (state.isError) {
-              NavigationHelper.pop(context);
-              ToastHelper.error(context, state.errorMessage);
-            }
-            if (state.isSuccess) {
-              NavigationHelper.pop(context);
-              ToastHelper.success(context, AppStrings.changePasswordSuccessMessage);
-              oldPass.clear();
-              newPass.clear();
-              confirmPass.clear();
-            }
-          },
-          child: Form(
-            key: formKye,
-            child: Column(
-              children: [
-
-                AssetIcon(
-                  assetName: SvgIcons.employeeLogo,
-                  width: context.responsive.screenWidth * 0.4,
-                  height: context.responsive.screenHeight * 0.3,
+        child: Form(
+          key: formKye,
+          child: Column(
+            children: [
+              ChangePasswordForm(
+                oldPass: oldPass,
+                newPass: newPass,
+                confirmPass: confirmPass,
+              ),
+              SizedBox(height: context.responsive.screenHeight * 0.35),
+              Card(
+                margin: EdgeInsets.zero,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+                child: Padding(
+                  padding: context.responsive.symmetricPadding(
+                    horizontal: 4.0,
+                    vertical: 1.4,
+                  ),
+                  child: CustomButton(
+                    text: AppStrings.updatePassword,
+                    onPressed: () {
+                      if (formKye.currentState!.validate()) {
+                        final cubit = context.read<PasswordCubit>();
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) => ChangePasswordSubmited(
+                            onSubmit: () {
+                              cubit.changePassword(
+                                request: ChangePasswordRequest(
+                                  oldPassword: oldPass.text,
+                                  newPassword: newPass.text,
+                                ),
+                              );
+                            },
+                            cubit: cubit,
+                          ),
+                        );
+                      }
+                    },
+                  ),
                 ),
-                SizedBox(height: context.responsive.screenHeight * 0.13),
-                Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    ChangePasswordForm(
-                      oldPass: oldPass,
-                      newPass: newPass,
-                      confirmPass: confirmPass,
-                      onPressed: () {
-                        if (formKye.currentState!.validate()) {
-                          context.read<PasswordCubit>().changePassword(
-                            request: ChangePasswordRequest(
-                              oldPassword: oldPass.text,
-                              newPassword: newPass.text,
-                            ),
-                          );
-                        }
-                      },
-                    ),
-                    const LookIcon(),
-                  ],
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
 }
-
-

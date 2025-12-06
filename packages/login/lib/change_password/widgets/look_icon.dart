@@ -15,6 +15,10 @@ class LookIcon extends StatelessWidget {
       left: context.responsive.screenWidth * 0.39,
       top: context.responsive.screenHeight * 0.0-43,
       child: Container(
+        padding: context.responsive.symmetricPadding(
+          horizontal: 2.5,
+          vertical: 2.5
+        ),
         height: context.responsive.screenHeight * 0.1,
         width: context.responsive.screenWidth * 0.23,
         decoration: BoxDecoration(

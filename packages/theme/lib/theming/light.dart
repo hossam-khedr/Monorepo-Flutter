@@ -16,7 +16,9 @@ class LightTheme {
       scaffoldBackgroundColor: AppColors.backgroundColor,
       brightness: Brightness.light,
       appBarTheme: AppBarTheme(
-        backgroundColor: LightColors.cardColor,
+        backgroundColor: AppColors.whit,
+        titleTextStyle: AppTypography.titleSmall(AppColors.textPrimary),
+        scrolledUnderElevation: 0,
         centerTitle: true,
         elevation: 2,
       ),
