@@ -11,7 +11,10 @@ base class AppStrings{
   static const String confirmPassword = 'Confirm Password';
   static const String inputConfirmPassword = 'Ry Enter Your Password';
   static const String setNewPassword = 'Set a New Password';
-  static const String submit = 'Submit';
+  static const String updatePassword = 'Update Password';
+  static const String yesUpdatePassword = 'Yes, Update password';
+  static const String noLetMeCheck = 'No, Let Me Check';
+  static const String updatePasswordHintMessage = 'Are you sure you want to update your password? To ensure your account safety we will send verification code to your email';
   static const String settings = 'SETTINGS';
   static const String account = 'ACCOUNT';
   static const String contacts = 'CONTACTS';
@@ -19,12 +22,13 @@ base class AppStrings{
   static const String officeAssets = 'Office Assets';
   static const String payrollTax = 'Payroll & Tax';
   static const String changePassword = 'Change Password';
+  static const String changePasswordForm = 'Change Password Form';
   static const String versioning = 'Versioning';
   static const String faqAndHelp = 'FAQ and Help';
   static const String logout = 'LogOut';
   static const String cancel = 'Cancel';
   static const String sureLogoutMessage = 'Are you sure you want to logout?';
-  static const String changePasswordHint = 'Please set a new password to secure your Work Mate account.';
+  static const String changePasswordHint = 'Fill information to change your password';
   static const String changePasswordSuccessMessage = 'The password has been successfully changed.';
   static const String roleErrorMessage = 'This account is for administration purposes. Please use the HR app.';
 }

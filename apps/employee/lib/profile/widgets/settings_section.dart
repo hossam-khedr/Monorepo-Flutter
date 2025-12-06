@@ -7,8 +7,6 @@ import 'package:employee/core/routing/employee_route.dart';
 import 'package:employee/profile/widgets/profile_sections.dart';
 import 'package:employee/profile/widgets/section_item.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_ui/widgets/asset_icon.dart';
-import 'package:shared_ui/widgets/custom_button.dart';
 
 class SettingsSection extends StatelessWidget {
   const SettingsSection({super.key});
