@@ -14,4 +14,18 @@ final class SvgIcons{
   static const String notificatios = '$path/notifications.svg';
   static const String chats = '$path/chats.svg';
   static const String camera = '$path/camera.svg';
+  static const String arrowLeft = '$path/arrow_left.svg';
+  static const String arrowRight = '$path/arrow-right.svg';
+  static const String email = '$path/email.svg';
+  static const String folder = '$path/folder.svg';
+  static const String logout = '$path/logout.svg';
+  static const String settings = '$path/setting.svg';
+  static const String sms = '$path/sms.svg';
+  static const String star = '$path/star.svg';
+  static const String user = '$path/user.svg';
+  static const String scroll = '$path/scroll.svg';
+  static const String money = '$path/money.svg';
+  static const String location = '$path/location.svg';
+  static const String message = '$path/message.svg';
+
 }
