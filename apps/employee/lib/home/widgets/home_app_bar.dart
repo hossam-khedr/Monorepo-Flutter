@@ -19,7 +19,9 @@ class HomeAppBar extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          CircleAvatar(radius: 25, child: Icon(AppIcons.person)),
+          InkWell(
+            onTap: ()=>NavigationHelper.pushNamed(context, EmployeeRoute.profile),
+              child: CircleAvatar(radius: 25, child: Icon(AppIcons.person))),
           SizedBox(width: context.responsive.spacingS),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,

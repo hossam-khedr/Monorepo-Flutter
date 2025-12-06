@@ -2,8 +2,8 @@ import 'package:employee/chats/chat_rome/chat_rome_screen.dart';
 import 'package:employee/chats/chats_screen.dart';
 import 'package:employee/core/routing/employee_route.dart';
 import 'package:employee/leaves/create_leave/create_leave_screen.dart';
-import 'package:employee/leaves/leave_details/leave_details_screen.dart';
 import 'package:employee/leaves/logic/cubit.dart';
+import 'package:employee/profile/profile_screen.dart';
 import 'package:employee/root/cubit/cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -56,6 +56,8 @@ class GenerateRoute {
         return MaterialPageRoute(builder: (_)=> const ChatsScreen());
       case EmployeeRoute.chatRome:
         return MaterialPageRoute(builder: (_)=> const ChatRomeScreen());
+      case EmployeeRoute.profile:
+        return MaterialPageRoute(builder: (_)=> const ProfileScreen());
     }
     return null;
   }

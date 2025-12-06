@@ -6,5 +6,6 @@ abstract class EmployeeRoute {
   static const String notification = 'notification';
   static const String changePassword = 'changePassword';
   static const String createLeave = 'createLeave';
+  static const String profile = 'profile';
 
 }

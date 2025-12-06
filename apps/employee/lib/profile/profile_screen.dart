@@ -1,69 +1,65 @@
-import 'package:core/utils/navigation_helper.dart';
-import 'package:employee/app/di.dart';
 import 'package:core/utils/responsive_helper.dart';
-import 'package:employee/core/routing/employee_route.dart';
-import 'package:employee/profile/logic/cubit.dart';
-import 'package:employee/profile/logic/stats.dart';
-import 'package:employee/profile/widgets/handel_theme.dart';
-import 'package:employee/profile/widgets/personal_informition.dart';
-import 'package:employee/profile/widgets/updeat_profile.dart';
-import 'package:employee/profile/widgets/work_informetion.dart';
-import 'package:shared_ui/screens/error_screen.dart';
+
+import 'package:employee/profile/widgets/account_section.dart';
+import 'package:employee/profile/widgets/contact_section.dart';
+
+import 'package:employee/profile/widgets/profile_app_bar.dart';
+import 'package:employee/profile/widgets/settings_section.dart';
+
+import 'package:employee/profile/widgets/user_image.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_ui/widgets/custom_button.dart';
-import 'package:theme/theming/colors/light_colors.dart';
+
+import 'package:theme/theming/colors/app_colors.dart';
 
 class ProfileScreen extends StatelessWidget {
-  final void Function()? onPassword;
-  final void Function()? onUpdate;
-  final void Function()? onLogout;
-
-  const ProfileScreen({super.key, this.onPassword, this.onUpdate, this.onLogout});
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return SafeArea(
-      child: BlocProvider(
-        create: (context) =>
-        getIt<ProfileCubit>()
-          ..getUserProfile(),
-        child: BlocBuilder<ProfileCubit, ProfileStats>(
-          builder: (context, state) {
-            if (state.isLoading) {
-              return Center(child: CircularProgressIndicator());
-            }
-            if (state.isError) {
-              return Center(
-                child: ErrorScreen(
-                  error: state.errorMessage,
-                  onPressed: () =>
-                      context.read<ProfileCubit>().getUserProfile(),
+    return Scaffold(
+      body: Container(
+        color: AppColors.buttonBackground,
+        width: context.responsive.screenWidth,
+        height: context.responsive.screenHeight,
+        child: Column(
+          children: [
+            const ProfileAppBar(),
+            Expanded(
+              child: Container(
+                width: context.responsive.screenWidth,
+                height: context.responsive.screenHeight,
+                decoration: BoxDecoration(
+                  color: AppColors.whit,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(25),
+                  ),
                 ),
-              );
-            }
-            if (state.isSuccess) {
-              return ListView(
-                children: [
-                  UpdateProfile(
-                    stats: state, onPassword: onPassword, onUpdate: onUpdate,),
-                  const HandelTheme(),
-                  PersonalInformition(userData: state.response!.userData),
-                  WorkInformition(userData: state.response!.userData),
-                  SizedBox(height: context.responsive.screenHeight * 0.02),
-                  CustomButton(text: 'تسجيل الخروج',
-                    isIconShow: true,
-                    onPressed: onLogout,
-                    buttonColor:LightColors.read ,
-                    icon: Icon(Icons.logout, size: 20, color: Colors.white),)
-
-                ],
-              );
-            } else {
-              return SizedBox.shrink();
-            }
-          },
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  alignment: Alignment.center,
+                  children: [
+                    Positioned.fill(
+                      top: context.responsive.screenHeight * 0.1,
+                      bottom: context.responsive.screenHeight * 0.02,
+                      child: ListView(
+                        shrinkWrap: true,
+                        children: [
+                          ContactSection(),
+                          SizedBox(height: context.responsive.spacingS),
+                          AccountSection(),
+                          SizedBox(height: context.responsive.spacingS),
+                          SettingsSection(),
+                        ],
+                      ),
+                    ),
+                    const UserImage(),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
