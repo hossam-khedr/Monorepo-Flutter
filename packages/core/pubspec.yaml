@@ -34,6 +34,9 @@ dependencies:
 # LocationService
   geolocator: ^14.0.2
 
+# Secure storage:
+  native_encrypted_storage: ^0.1.0
+
 
 dev_dependencies:
   flutter_test:
