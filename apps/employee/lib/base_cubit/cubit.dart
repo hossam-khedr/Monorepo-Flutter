@@ -1,5 +1,6 @@
 import 'package:core/constants/api_constants.dart';
 import 'package:core/utils/cache_helper.dart';
+import 'package:core/utils/servises/secure_data_helper.dart';
 import 'package:employee/base_cubit/states.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -88,14 +89,17 @@ class BaseCubit extends Cubit<BaseAppStats> {
     }
   }
 
-  String? checedEmployeeLogdIin() {
-    final token = CacheHelper.getString(ApiConstants.tokenKey);
-    if (token != null) {
-      return EmployeeRoute.root;
-    } else {
-      return EmployeeRoute.login;
-    }
-  }
+  // String? checedEmployeeLogdIin() {
+  //   final token = CacheHelper.getString(ApiConstants.tokenKey);
+  //   if (token != null) {
+  //     return EmployeeRoute.root;
+  //   } else {
+  //     return EmployeeRoute.login;
+  //   }
+  // }
+
+
+
 
 
 }

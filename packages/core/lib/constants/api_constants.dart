@@ -1,5 +1,5 @@
 abstract class ApiConstants {
-  static const String baseURL = 'http://192.168.1.6:8080/api/v1/';
+  static const String baseURL = 'http://192.168.1.4:8080/api/v1/';
   static const String loginEndpoint = 'auth/login';
   static const String profileEndpoint = 'profile';
   static const String changePasswordEndpoint = 'auth/first-login-password';

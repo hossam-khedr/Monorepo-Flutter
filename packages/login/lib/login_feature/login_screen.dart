@@ -39,93 +39,81 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: AppColors.blue900,
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            AssetIcon(
-              assetName: SvgIcons.employeeLogo,
-              width: context.responsive.screenWidth * 0.4,
-              height: context.responsive.screenHeight * 0.3,
+        child: Form(
+          key: formKey,
+          child: Padding(
+            padding: context.responsive.symmetricPadding(
+              horizontal: 4.0,
+              vertical: 2.0
             ),
-            SizedBox(height: context.responsive.screenHeight * 0.20),
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(40),
-                  topLeft: Radius.circular(40),
+            child: Column(
+              children: [
+                AssetIcon(
+                  assetName: SvgIcons.employeeLogo,
+                  width: context.responsive.screenWidth * 0.4,
+                  height: context.responsive.screenHeight * 0.2,
                 ),
-              ),
-              margin: EdgeInsets.zero,
-              color: AppColors.whit,
-              child: Padding(
-                padding: context.responsive.symmetricPadding(
-                  horizontal: 6.0,
-                  vertical: 4.0,
-                ),
-                child: Form(
-                  key: formKey,
-                  child: BlocListener<LoginCubit, LoginStats>(
-                    listener: (context, state) =>
-                        _handelLoginState(context, state),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Align(
-                          alignment: AlignmentDirectional.topCenter,
-                          child: Text(
-                            AppStrings.singIn,
-                            style: theme.textTheme.headlineSmall,
-                          ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional.topCenter,
-                          child: Text(
-                            AppStrings.singInHint,
-                            style: theme.textTheme.labelLarge,
-                          ),
-                        ),
-                        SizedBox(height: context.responsive.spacingL),
-                        Text(
-                          AppStrings.employeeId,
-                          style: theme.textTheme.bodySmall,
-                        ),
-                        NachonalIdFormField(
-                          nationalIdIdController: nationalIdIdController,
-                          validator: (v)=> Validator.validateNachonalId(v),
-                        ),
-                        SizedBox(height: context.responsive.spacingL),
-                        Text(
-                          AppStrings.password,
-                          style: theme.textTheme.bodySmall,
-                        ),
-                        PasswordFormField(
-                          passwordController: passwordController,
-                          validator: (v)=>Validator.validatePassword(v),
-                        ),
-                        SizedBox(height: context.responsive.spacingXXL),
-                        CustomButton(
-                          text: AppStrings.singIn,
-                          onPressed: () {
-                            if (formKey.currentState!.validate()) {
-                              context.read<LoginCubit>().login(
-                                loginRequest: LoginRequest(
-                                  nationalId: nationalIdIdController.text,
-                                  password: passwordController.text,
-                                ),
-                              );
-                            }
-                          },
-                        ),
-                        SizedBox(height: context.responsive.spacingM,)
-                      ],
-                    ),
+                Align(
+                  alignment: AlignmentDirectional.topCenter,
+                  child: Text(
+                    AppStrings.singIn,
+                    style: theme.textTheme.headlineSmall,
                   ),
                 ),
-              ),
-            ),
+                Align(
+                  alignment: AlignmentDirectional.topCenter,
+                  child: Text(
+                    AppStrings.singInHint,
+                    style: theme.textTheme.labelLarge,
+                  ),
+                ),
+                BlocListener<LoginCubit, LoginStats>(
+                  listener: (context, state) =>
+                      _handelLoginState(context, state),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: context.responsive.spacingL),
+                      Text(
+                        AppStrings.employeeId,
+                        style: theme.textTheme.bodySmall,
+                      ),
+                      NachonalIdFormField(
+                        nationalIdIdController: nationalIdIdController,
+                        validator: (v)=> Validator.validateNachonalId(v),
+                      ),
+                      SizedBox(height: context.responsive.spacingL),
+                      Text(
+                        AppStrings.password,
+                        style: theme.textTheme.bodySmall,
+                      ),
+                      PasswordFormField(
+                        passwordController: passwordController,
+                        validator: (v)=>Validator.validatePassword(v),
+                      ),
+                      SizedBox(height: context.responsive.spacingXXL),
+                      CustomButton(
+                        text: AppStrings.singIn,
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            context.read<LoginCubit>().login(
+                              loginRequest: LoginRequest(
+                                nationalId: nationalIdIdController.text,
+                                password: passwordController.text,
+                              ),
+                            );
+                          }
+                        },
+                      ),
+                      SizedBox(height: context.responsive.spacingM,)
+                    ],
+                  ),
+                ),
 
-          ],
+              ],
+            ),
+          ),
         ),
       ),
     );
